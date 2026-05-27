@@ -374,7 +374,6 @@ class RandomBaselineOptimizer:
 
 def generate_search_space(request: Type, linear_feature_dimensions: list[int], constant_values: list[int],
                           learning_rate_values: list[float], epochs: int) -> tuple[SolutionSpace, float]:
-    # TODO: Das muss globale Variable werden, damit RefinedBO und BO den gleichen Search Space bekommen.
     repo = DAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
                          learning_rate_values=learning_rate_values,
                          n_epoch_values=[epochs])
@@ -1010,7 +1009,6 @@ def compute_total_objective_evaluations(
     fresh presample block and must therefore be counted explicitly in the experiment
     budget as well.
     """
-    # TODO: das ist nicht, was ich meinte!!!!
     extra_presamples = 0
     if search_space_mode == "reinitialize":
         extra_presamples = n_pre_samples * max(refinement_slices - 1, 0)
