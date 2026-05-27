@@ -246,10 +246,6 @@ class TargetRunData:
     surrogate_diagnostics_by_kernel: dict[str, dict[str, Any]] = field(default_factory=dict)
 
 
-def _plot_results(target_runs: list[TargetRunData]) -> None:
-    # TODO: Plotting
-    pass
-
 def _safe_pairwise_correlation(x: np.ndarray, y: np.ndarray, method: str) -> tuple[float, float]:
     if x.size < 2 or y.size < 2:
         return float("nan"), float("nan")
