@@ -1,0 +1,1901 @@
+experiment_id,method,target_name,kernel_name,seed,evaluation,candidate,best_candidate,objective_value,best_objective_value,bo_overhead_time,objective_eval_time,cumulative_wallclock_time,distance_to_best,distance_to_topk,ei_optimizer,ei_random_best,ei_ratio,ei_random_mean,sigma_random_mean,sigma_random_max,gp_rank_spearman,gp_rank_kendall,gp_rank_pearson
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,1,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=0), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",8.729764938354492,3.6916301250457764,529.1284162049997,28.390313863998017,557.5187300689977,0.3594133492163806,0.401464822957577,,,,,,,0.990909090909091,0.9636363636363636,0.9976255110940891
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,2,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563418388366699,3.6916301250457764,453.5662918900016,82.52377859400076,1093.608800553,0.42281561951154384,0.44709802014911315,,,,,,,1.0,0.9999999999999998,0.9999649376700718
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,3,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Copy(out_dimension=2), 1, 2) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sum(with_constant=1), 1, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.581414222717285,3.6916301250457764,607.4524878099983,39.023283139998966,1740.0845715029973,0.4575316628017701,0.4406621620030813,,,,,,,0.9945054945054945,0.9743589743589742,0.9999255764449806
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,4,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",10.54454231262207,3.6916301250457764,267.47271336699487,9.536322972999187,2017.0936078429913,0.4333192534917963,0.41391501328310376,,,,,,,0.9824175824175824,0.9340659340659341,0.9998160030447842
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,5,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=2, bias=False), 1, 2)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.045120239257812,3.6916301250457764,291.9739031579993,17.585787485000765,2326.6532984859914,0.43417283895922415,0.43571806741493446,,,,,,,0.9607142857142855,0.9047619047619049,0.9957132483889318
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,6,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Copy(out_dimension=2), 1, 2) || (ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Linear(in_features=3, out_features=1, bias=False), 3, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",18.49267578125,3.6916301250457764,429.07936943200184,7.160457861999021,2762.8931257799923,0.5137019076507924,0.49465603887429327,,,,,,,0.9970588235294118,0.9833333333333333,0.9996713124341028
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,7,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.ReLu(inplace=False), 1, 1) || (ODErepository.Tanh(), 2, 2) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 1, 1) || (ODErepository.Tanh(), 2, 2) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.13767433166504,3.6916301250457764,427.6257899049997,9.512868205001723,3200.0317838899937,0.5031375389429934,0.5021916533884345,,,,,,,0.9460784313725492,0.8970588235294118,0.9962945379701587
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,8,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || (ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || (ODErepository.Sum(with_constant=0), 4, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",14.096383094787598,3.6916301250457764,288.8204050690001,9.989906458002224,3498.842095416996,0.416598310298952,0.40366397399721643,,,,,,,0.9958720330237358,0.9738562091503269,0.9995835388075358
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,9,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || edges(1)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Tanh(), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",12.01209831237793,3.6916301250457764,456.9567514940027,15.08999110899822,3970.888838019997,0.46928321775693865,0.46082042598345085,,,,,,,0.987719298245614,0.9532163742690059,0.9993808493446262
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,10,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.4893085956573486,2.4893085956573486,453.1497780180034,7.58635155599768,4431.624967593998,0.35203533540856086,0.37131768186527203,,,,,,,0.9669172932330825,0.9263157894736842,0.9938514010029031
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,11,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=5), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || swap(3, 1, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Product(with_constant=1), 3, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",820147.3125,2.4893085956573486,381.0335852240023,0.005493893000675598,4812.664046711001,0.4108710701877686,0.4357360475848019,,,,,,,0.8974025974025974,0.8761904761904763,0.624585365714626
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,12,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.1356894969940186,2.1356894969940186,464.4347051629993,7.18549170100232,5284.284243575003,0.43713673469793474,0.39996940765387895,,,,,,,0.8452851496329757,0.8528138528138528,0.9882853099710629
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,13,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Copy(out_dimension=5), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=5, out_features=1, bias=False), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,489.07519404600316,5.262500168999395,5778.621937790005,0.40636057511994467,0.4575247434972381,,,,,,,0.976031658163346,0.9504969130435149,0.9980078675801328
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,14,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=False), 2, 3) || edges(2)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || edges(2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.04492950439453,2.1356894969940186,325.71040645799803,17.37587391499983,6121.708218163003,0.5979898687291885,0.5335869266879276,,,,,,,0.9197651880835435,0.8965532006711752,0.9968104031398254
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,15,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Copy(out_dimension=2), 1, 2) || edges(1)) ; (swap(3, 2, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=-1), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",54.700836181640625,2.1356894969940186,407.60323589400286,7.696366842999851,6537.007820900006,0.3742536649743954,0.40917335579064834,,,,,,,0.9763416222152453,0.9382316914283196,0.9977627926399687
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,16,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (swap(3, 2, 1) || edges(1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 5, 1)) ; ((ODErepository.Product(with_constant=-1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.04485321044922,2.1356894969940186,248.31266836299983,5.817171971000789,6791.137661234006,0.34714902305582485,0.456547709508628,,,,,,,0.987861187287915,0.9553170046101168,0.9999941607391878
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,17,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=True), 2, 4)) ; (edges(3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",12.932292938232422,2.1356894969940186,267.63689825300025,5.9716129539992835,7064.746172441006,0.574255331252024,0.5530261503297451,,,,,,,0.9647382191471374,0.9301008037237175,0.997297680732824
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,18,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Copy(out_dimension=2), 1, 2) || edges(2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; ((ODErepository.Product(with_constant=-1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,481.5790452700021,7.099882517999504,7553.4251002290075,0.49925676804055297,0.49570906426146966,,,,,,,0.9622126305999718,0.9322783152808272,0.9972391455530631
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,19,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",22.815752029418945,2.1356894969940186,507.3893388290053,6.357572147004248,8067.172011205017,0.4752192235104955,0.4898157933418944,,,,,,,0.9955644383113772,0.9765209293459842,0.999999966770485
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,20,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(2)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Sum(with_constant=1), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",99.85662841796875,2.1356894969940186,337.78329273900454,7.620508896005049,8412.575812840027,0.43289454637750585,0.4252315679506375,,,,,,,0.9959938667602098,0.9780912071662707,0.9998474580404508
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,21,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=4), 1, 4)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=-1), 1, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=False), 2, 3) || edges(1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=-1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",46.264923095703125,2.1356894969940186,510.1137839599978,3.740926099002536,8926.430522899027,0.39600215620791396,0.43729244844781834,,,,,,,0.9697459441678786,0.9320437157453114,0.9979794655554342
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,22,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",65.52896118164062,2.1356894969940186,307.66686506999395,7.3720291599966,9241.469417129018,0.3125856876237362,0.399823987387853,,,,,,,0.9270260982661486,0.903947535911476,0.9909622139697041
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,23,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; (swap(2, 1, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",12.40224838256836,2.1356894969940186,317.3334473339928,17.460427214995434,9576.263291678006,0.46038839822636146,0.47558499265029575,,,,,,,0.9943163377526073,0.9667655569659287,0.9995050698205945
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,24,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Copy(out_dimension=3), 1, 3) || (ODErepository.Product(with_constant=1), 1, 1) || edges(1)) ; ((ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2) || (ODErepository.Product(with_constant=1), 1, 1) || edges(1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,418.21622094899794,9.410295595000207,10003.889808222004,0.40320317815659057,0.41759407008439337,,,,,,,0.9703366750182413,0.9372895319734244,0.9977376584049414
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,25,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Copy(out_dimension=2), 1, 2)) ; (edges(1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sum(with_constant=0), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",325.6046142578125,2.1356894969940186,251.57549461500457,0.002868688003218267,10255.468171525012,0.4505325531575197,0.5274578558132705,,,,,,,0.952067507771982,0.917241507296848,0.9780820451511818
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,26,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1)) ; ((ODErepository.Copy(out_dimension=3), 1, 3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.557788372039795,2.1356894969940186,287.8247624239957,27.04259266200097,10570.335526611008,0.3709664249026479,0.38509612151237665,,,,,,,0.9905990463173389,0.9537589237622287,0.9998684433066436
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,27,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2) || (ODErepository.Sigmoid(), 1, 1) || edges(1)) ; ((ODErepository.Sum(with_constant=1), 1, 1) || edges(1) || swap(2, 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.294410705566406,2.1356894969940186,573.7461785210035,18.88880260300357,11162.970507735015,0.43371462106603137,0.4091195216885376,,,,,,,0.9882577944744998,0.9502359722450013,0.999698882352675
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,28,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=True), 2, 4) || edges(1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || (ODErepository.Sum(with_constant=0), 3, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044893264770508,2.1356894969940186,344.3623578280094,8.992458122003882,11516.325323685029,0.4549357185279252,0.45157304009631594,,,,,,,0.961353329934844,0.9242942027408397,0.9972379735298681
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,29,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; (edges(3) || (ODErepository.Sigmoid(), 1, 1)) ; (edges(1) || (ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,381.8449670990012,6.327768943003321,11904.498059727033,0.48961082517752585,0.4759733694431877,,,,,,,0.9785212722440991,0.9334454531744596,0.9926230320401045
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,30,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; (edges(2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || edges(1) || (ODErepository.Sum(with_constant=1), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",43.35804748535156,2.1356894969940186,388.955838226997,6.488405186995806,12299.942303141026,0.3714375088084466,0.38740847874549494,,,,,,,0.987981656188972,0.9471164854597544,0.9997822044957283
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,31,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; (swap(4, 2, 2) || (ODErepository.ReLu(inplace=False), 1, 1)) ; ((ODErepository.Sum(with_constant=0), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044893264770508,2.1356894969940186,517.9930925789959,5.2458500229986385,12823.18124574302,0.4862868802407873,0.5164633924222422,,,,,,,0.9812114491411299,0.9343368330617423,0.9910852611649964
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,32,"
+Learner(
+    model= (
+        ((ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; ((ODErepository.Copy(out_dimension=2), 1, 2) || edges(1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",14.358242988586426,2.1356894969940186,319.9118019669986,9.38852737400157,13152.48157508402,0.4452367667917291,0.44919383185425293,,,,,,,0.9879570509535673,0.9468342956606659,0.9999676131602672
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,33,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; (edges(1) || (ODErepository.Copy(out_dimension=3), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(2) || (ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Sum(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",1260.03466796875,2.1356894969940186,345.3906087149953,0.003372202998434659,13497.875556002014,0.479947164390508,0.4714407818437337,,,,,,,0.9869652103576569,0.942636084455751,0.977298897068946
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,34,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || (ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; (swap(2, 1, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563399314880371,2.1356894969940186,267.7346672010026,5.981658710996271,13771.591881914013,0.5066110275230103,0.5171601581926759,,,,,,,0.921189293082717,0.8942205006507152,0.988579300066013
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,35,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; (edges(1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || edges(1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.04495620727539,2.1356894969940186,373.0101240159929,16.572916287004773,14161.174922217011,0.4452367667917291,0.4459558179797617,,,,,,,0.9577114262344139,0.9151996550935542,0.9977944851892521
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,36,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1) || edges(1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.023382186889648,2.1356894969940186,304.97613462300797,9.80971414600208,14475.960770986021,0.40087963478863425,0.4185776205286009,,,,,,,0.9855289180539342,0.9402756816423165,0.9989370177447597
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,37,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; (edges(1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sum(with_constant=1), 1, 1)) ; (swap(2, 1, 1) || (ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.157214164733887,2.1356894969940186,392.4550012569962,7.407598356003291,14875.82337059902,0.4253951737127733,0.40382765722777,,,,,,,0.9888058287807817,0.9502681208025138,0.9996580729571004
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,38,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=False), 2, 4) || edges(1)) ; (edges(1) || (ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.138111591339111,2.1356894969940186,460.817842507,15.701475178000692,15352.342688284021,0.4298221334433457,0.44742195082731034,,,,,,,0.9751542574386338,0.932750617655879,0.9981226248791982
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,39,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1) || edges(1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",50.31974792480469,2.1356894969940186,339.4233625959969,14.227538489998551,15705.993589370017,0.5568825778283977,0.5179292720013624,,,,,,,0.974808072851141,0.9337992878775303,0.9976287398452595
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,40,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; (edges(1) || (ODErepository.Copy(out_dimension=4), 1, 4)) ; (edges(2) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.830589294433594,2.1356894969940186,327.68588972499856,2.426972326997202,16036.106451422012,0.4946009295413469,0.4619091641294163,,,,,,,0.9870524208654553,0.9512191862844831,0.9990860475305141
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,41,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=1), 1, 1)) ; ((ODErepository.Sigmoid(), 1, 1) || swap(2, 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",8.943695068359375,2.1356894969940186,304.8605338210036,3.8880375560038374,16344.85502279902,0.48473373135750675,0.4729656003855055,,,,,,,0.9860794703723759,0.9484137846294491,0.9937065697296225
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,42,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || (ODErepository.Linear(in_features=2, out_features=2, bias=False), 2, 2) || (ODErepository.Product(with_constant=1), 2, 1)) ; (swap(3, 2, 1) || edges(1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.5633955001831055,2.1356894969940186,272.57561956800055,5.117059960997722,16622.54770232802,0.47468949454745374,0.46612513555179735,,,,,,,0.9911384481795384,0.9579787752604336,0.9999576073508032
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,43,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(3) || (ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2) || edges(1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",8.042954444885254,2.1356894969940186,296.73064514699945,3.561003800998151,16922.839351276016,0.3482478569444186,0.37199790507324604,,,,,,,0.9909856294320226,0.9581133395164252,0.9995047300077898
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,44,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4) || (ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; (swap(3, 2, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563397407531738,2.1356894969940186,203.27095837199886,3.429007837003155,17129.539317485018,0.5306240164481894,0.5250382409718379,,,,,,,0.9488456212516315,0.9231917189679316,0.9965883124465403
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,45,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=True), 2, 4)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044889450073242,2.1356894969940186,155.6064321839949,3.8662105059993337,17289.011960175012,0.5186394864281441,0.5333639699307027,,,,,,,0.9822263827940357,0.9489758036221828,0.9977279787402324
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,46,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.ReLu(inplace=False), 1, 1) || edges(2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Linear(in_features=1, out_features=2, bias=False), 1, 2) || (ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",53.16582107543945,2.1356894969940186,265.1598655220005,4.244916068004386,17558.416741765017,0.4857094527876321,0.44938062016229124,,,,,,,0.964905445170235,0.9338606743235393,0.9946713053360764
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,47,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=2, bias=True), 1, 2) || edges(3)) ; ((ODErepository.Sum(with_constant=0), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044906616210938,2.1356894969940186,222.6350207140058,3.1907080420060083,17784.24247052103,0.44118457721575727,0.438273263103426,,,,,,,0.9934026608530379,0.9663685569283115,0.9999493489014742
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,48,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1) || edges(1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",4.33445405960083,2.1356894969940186,245.5386715450004,3.2948788309950032,18033.076020897024,0.3002130223568513,0.3805597003786688,,,,,,,0.9933074352625517,0.9638900449718224,0.9986804154718
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,49,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=1, bias=False), 1, 1)) ; ((ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044889450073242,2.1356894969940186,104.74163880800188,2.715090097000939,18140.532749802027,0.5327552574417442,0.5899064971445215,,,,,,,0.992779729187382,0.9624693026379487,0.9997086501479882
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,50,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=True), 2, 4)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044910430908203,2.1356894969940186,142.42249278700183,3.3523184770019725,18286.30756106603,0.8309140168026437,0.7553555779961989,,,,,,,0.9815726298827148,0.9444499077504709,0.9989565060659004
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,51,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Linear(in_features=3, out_features=1, bias=False), 3, 1)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.04463005065918,2.1356894969940186,278.5425612079998,3.3757775659978506,18568.22589984003,0.43513360020023567,0.4533283366769627,,,,,,,0.9911132689552239,0.9572420211035461,0.9997585043867204
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,52,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",5.908389091491699,2.1356894969940186,181.45973325699742,3.480957297004352,18753.16659039403,0.4006183034889833,0.41411022050129526,,,,,,,0.9909572168803256,0.9575645325599265,0.9996681664714892
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,53,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Tanh(), 3, 3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",4.118360996246338,2.1356894969940186,175.7033860159936,3.741566126001999,18932.611542536026,0.4409639975087967,0.44510329175120933,,,,,,,0.9818980968041642,0.9414528524627797,0.9982714227605853
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,54,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=2, bias=True), 1, 2)) ; (edges(2) || (ODErepository.Linear(in_features=1, out_features=2, bias=True), 1, 2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,214.96678654399875,3.291220762002922,19150.869549842027,0.5856664271013824,0.5431844411657852,,,,,,,0.9891094872295555,0.9529350675771852,0.9999990315086693
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,55,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1)) ; ((ODErepository.Sum(with_constant=-1), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=3, out_features=1, bias=False), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044893264770508,2.1356894969940186,245.7804176149948,3.0074282309942646,19399.657395688017,0.4306124420708983,0.44059905768080243,,,,,,,0.989046880731257,0.9529199557051551,0.9997153780424157
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,56,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=True), 2, 1)) ; ((ODErepository.Sum(with_constant=-1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.525355339050293,2.1356894969940186,136.11594459700427,2.761651228996925,19538.534991514018,0.411133786445366,0.44131017334674016,,,,,,,0.9784484512197908,0.9328118526037735,0.9985385162582964
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,57,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(2, 1, 1) || edges(1)) ; (edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.5633931159973145,2.1356894969940186,240.99822116099676,3.040174717003538,19782.573387392018,0.38567874847770367,0.4097542332410392,,,,,,,0.940713904416419,0.9112053951476782,0.9912840302077938
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,58,"
+Learner(
+    model= (
+        ((ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Linear(in_features=3, out_features=3, bias=True), 3, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",14.358241081237793,2.1356894969940186,208.93466624199937,3.2395692150021205,19994.74762284902,0.3849099792232582,0.43207830923750395,,,,,,,0.9892695569884404,0.9508569162564993,0.9996575759013904
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,59,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=2, bias=False), 1, 2) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563382625579834,2.1356894969940186,161.0806147090043,4.536843128000328,20160.365080686024,0.5083870304679892,0.4526428187888432,,,,,,,0.9814145392368707,0.9385911094181527,0.9988660748602506
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,60,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Copy(out_dimension=4), 1, 4) || (ODErepository.Sum(with_constant=-1), 1, 1)) ; (edges(1) || (ODErepository.Sum(with_constant=-1), 1, 1) || edges(1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563307285308838,2.1356894969940186,332.0554129880038,2.2657668360043317,20494.686260510032,0.4323594811463339,0.44906370176726423,,,,,,,0.9800473165421794,0.9370266380540776,0.9982789583992677
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,61,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 2, 1)) ; ((ODErepository.Product(with_constant=1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",50.31977081298828,2.1356894969940186,140.91352162999829,2.449857753003016,20638.049639893034,0.40217416333012657,0.4583950202789927,,,,,,,0.9725428256033517,0.9299199964612753,0.9963188570115893
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,62,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1)) ; ((ODErepository.Sum(with_constant=-1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.2604033946990967,2.1356894969940186,193.97357704100432,2.470270840000012,20834.493487774038,0.383915266677985,0.41390964598538693,,,,,,,0.9736233133657697,0.9326591506582487,0.995087380593789
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,63,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Sum(with_constant=-1), 1, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",23.900550842285156,2.1356894969940186,114.17936581300455,2.45444926500204,20951.127302852045,0.4533672360181076,0.4608151475218265,,,,,,,0.987840303819235,0.946731455114638,0.9985965683158526
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,64,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 4, 1) || (ODErepository.Sigmoid(), 1, 1)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Sum(with_constant=0), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",6.23070764541626,2.1356894969940186,167.39569129099982,2.5951314750054735,21121.11812561805,0.37884292709706713,0.4191443518327274,,,,,,,0.978431270259106,0.9370298012449216,0.997410452467802
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,65,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=False), 2, 2) || (ODErepository.Linear(in_features=1, out_features=2, bias=False), 1, 2)) ; (edges(2) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Sum(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",109.90658569335938,2.1356894969940186,168.09289592001005,2.74801907499932,21291.95904061306,0.5684629185877587,0.5260473707829298,,,,,,,0.9765225210436626,0.9358218296740958,0.9928956397650182
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,66,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Sum(with_constant=0), 4, 1)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=True), 2, 1) || (ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,154.11375752999447,3.150979042999097,21449.223777186053,0.5555180103536012,0.5121583723749075,,,,,,,0.9850177622365859,0.9469695411723066,0.9984009660107208
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,67,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; (edges(1) || (ODErepository.Sum(with_constant=-1), 1, 1) || (ODErepository.Product(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",3.404214382171631,2.1356894969940186,195.56602763199044,2.5588766549990396,21647.348681473042,0.3137222880477463,0.3388444518533045,,,,,,,0.9857125803501404,0.9462932468875841,0.998818005248545
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,68,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sum(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || edges(1) || (ODErepository.Sum(with_constant=-1), 1, 1)) ; ((ODErepository.Sum(with_constant=0), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.050308227539062,2.1356894969940186,183.42346758901112,2.5255580579978414,21833.29770712005,0.38140835921734373,0.399866370379142,,,,,,,0.9815746759980346,0.9423255702363886,0.9992169432822017
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,69,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=4), 1, 4)) ; (edges(2) || (ODErepository.Sigmoid(), 1, 1) || edges(1)) ; (swap(2, 1, 1) || edges(1) || (ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Linear(in_features=5, out_features=1, bias=True), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.19691276550293,2.1356894969940186,211.00043399200513,1.755145873001311,22046.053286985058,0.5388567205521685,0.50245947394696,,,,,,,0.992396223284567,0.9626933389554156,0.9997144154885002
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,70,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 2, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 1, 1) || edges(1)) ; (edges(1) || (ODErepository.Product(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",618.4168701171875,2.1356894969940186,191.1452753420017,2.54859365500306,22239.747155982062,0.3905105510226912,0.4293950058682613,,,,,,,0.9423786648913169,0.9223265745584243,0.9653492101305061
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,71,"
+Learner(
+    model= (
+        ((ODErepository.Copy(out_dimension=4), 1, 4)) ; ((ODErepository.Linear(in_features=3, out_features=2, bias=False), 3, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.03510093688965,2.1356894969940186,124.54989229600324,2.4018105729992385,22366.698858851065,0.47900833574467766,0.4573680432938132,,,,,,,0.9587991012875169,0.8486508265079592,0.9975341289620901
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,72,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=2, bias=False), 1, 2)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; (swap(3, 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",13.42509937286377,2.1356894969940186,135.98632682300376,2.5652705550019164,22505.25045622907,0.4472023430348934,0.43582616413082054,,,,,,,0.9599621652705923,0.8523560910122939,0.9980220491049806
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,73,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4) || (ODErepository.Linear(in_features=2, out_features=1, bias=True), 2, 1)) ; (swap(3, 1, 2) || (ODErepository.Sum(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.04489517211914,2.1356894969940186,145.10801287200593,2.5986780439998256,22652.957147145076,0.508599975877204,0.4681136960495145,,,,,,,0.9569517621170589,0.8476683475343461,0.9977484722163718
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,74,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(2) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sigmoid(), 2, 2) || edges(2)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.541323184967041,2.1356894969940186,196.93488053700275,3.107098243999644,22852.99912592608,0.6345855610983918,0.5612341955605488,,,,,,,0.9611554092095378,0.8576419432582449,0.9982155048076526
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,75,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; (edges(1) || (ODErepository.Copy(out_dimension=2), 1, 2)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.00103187561035,2.1356894969940186,132.70294964100322,2.364585661998717,22988.06666122908,0.37629844271318114,0.39930401413330807,,,,,,,0.9601552579683219,0.8548190505796068,0.9972152226048823
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,76,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=-1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=3, out_features=3, bias=False), 3, 3) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044889450073242,2.1356894969940186,142.19568095900468,2.416364444005012,23132.67870663209,0.41909389986735496,0.4604745649974135,,,,,,,0.9555694404385725,0.8419665163988868,0.9969327999842912
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,77,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; (edges(2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Copy(out_dimension=3), 1, 3) || edges(2)) ; ((ODErepository.Sum(with_constant=-1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",67.70362854003906,2.1356894969940186,136.1666811640025,1.7279249230050482,23270.573312719098,0.5214825628489547,0.5163368086355191,,,,,,,0.9440494822976135,0.8246868305623677,0.9949192191041037
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,78,"
+Learner(
+    model= (
+        ((ODErepository.Sum(with_constant=-1), 1, 1)) ; ((ODErepository.Copy(out_dimension=4), 1, 4)) ; ((ODErepository.Tanh(), 2, 2) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",24.526153564453125,2.1356894969940186,146.05507642000157,1.6254686239990406,23418.2538577631,0.47690709344553267,0.48305087403386276,,,,,,,0.9580735327543274,0.8480850072243347,0.9968678337348141
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,79,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3) || (ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.1869025230407715,2.1356894969940186,180.16715718900377,2.848317956995743,23601.269332909098,0.3863682972517508,0.37634260547794196,,,,,,,0.9490157698480751,0.834085708214444,0.993639071952182
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,80,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sum(with_constant=0), 4, 1)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.548561096191406,2.1356894969940186,126.64693411600456,2.411718028000905,23730.327985053103,0.377553269842585,0.40088682434362033,,,,,,,0.9553901840840854,0.8397893454207096,0.9963706086882447
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,81,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=True), 1, 4)) ; ((ODErepository.Linear(in_features=2, out_features=4, bias=True), 2, 4) || (ODErepository.Product(with_constant=1), 2, 1)) ; (edges(1) || swap(3, 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sum(with_constant=0), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",21.136241912841797,2.1356894969940186,164.95755468399875,3.1796282559953397,23898.465167993098,0.46053706525840366,0.46409400602226647,,,,,,,0.9578647521767685,0.8452820953365278,0.9968631378683761
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,82,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Tanh(), 3, 3) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; (edges(1) || (ODErepository.Linear(in_features=1, out_features=2, bias=True), 1, 2) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",3.301809310913086,2.1356894969940186,212.97474269899976,3.675175276999653,24115.115085969097,0.39337711256911195,0.36848125315063596,,,,,,,0.9537361351993678,0.8352350487958732,0.9955568036850779
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,83,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=4, out_features=3, bias=True), 4, 3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=3, out_features=1, bias=True), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",22.500530242919922,2.1356894969940186,164.67166865299805,3.4460136819980107,24283.232768304093,0.3442102712491654,0.35217695238238966,,,,,,,0.9620482022173875,0.8528592388731768,0.9970585523633904
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,84,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=False), 2, 3) || (ODErepository.Sum(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=False), 2, 3) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,2.1356894969940186,123.09702552299859,3.3419165659943246,24409.671710393086,0.5604861478746387,0.5039578481304373,,,,,,,0.9588998065459775,0.8468139880712879,0.9968001874748403
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,85,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=0), 4, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",15.169777870178223,2.1356894969940186,133.77356202800001,2.6400548749952577,24546.08532729608,0.39981345458020173,0.4341000325608871,,,,,,,0.960093584941998,0.8478029546448774,0.9967110977698588
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,86,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sum(with_constant=-1), 3, 1) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",3.6310434341430664,2.1356894969940186,119.27088558399555,2.9331322009966243,24668.289345081073,0.3551378082592112,0.3494069065894775,,,,,,,0.9573660181012222,0.8426209116190524,0.9957401698303554
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,87,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; ((ODErepository.Sum(with_constant=-1), 3, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Sum(with_constant=1), 2, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",23.06048583984375,2.1356894969940186,121.74648733399954,2.8212106989958556,24792.85704311407,0.37926023956270943,0.3973680721704758,,,,,,,0.9627688701030879,0.8536379801724269,0.9964978014651305
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,88,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Product(with_constant=1), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (edges(1) || swap(2, 1, 1) || (ODErepository.Sum(with_constant=0), 2, 1)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=True), 2, 3) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=1), 5, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7.563450336456299,2.1356894969940186,123.30513966899889,2.679716696999094,24918.841899480067,0.4992589573803828,0.4345120911793214,,,,,,,0.9618885256670453,0.8519902861364201,0.9968027525589523
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,89,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.1289710998535156,2.1289710998535156,169.1005823259984,2.7416680399983306,25090.684149846064,0.33821654857781663,0.32879040156017897,,,,,,,0.9593081908181754,0.845474818654079,0.9949432621000327
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,90,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.ReLu(inplace=False), 2, 2) || (ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Product(with_constant=-1), 3, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",4.899906158447266,2.1289710998535156,172.53939228300442,4.310008810003637,25267.53355093907,0.5174852862616169,0.4780186811465036,,,,,,,0.9626780036096295,0.8570900276507435,0.9969972725760825
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,91,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || (ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",2.7370941638946533,2.1289710998535156,145.68405429499398,4.143084210998495,25417.360689445064,0.4254655290082207,0.37899151797160846,,,,,,,0.9626283450034325,0.8579425058688042,0.9962041187887488
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,92,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=3, bias=False), 2, 3) || (ODErepository.Product(with_constant=1), 2, 1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1)) ; ((ODErepository.Sum(with_constant=0), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",3.790637254714966,2.1289710998535156,142.94431938100024,3.3943209589997423,25563.699329785064,0.4273301715094618,0.4010130459320935,,,,,,,0.9713639648914675,0.8790465020340624,0.9982177988342179
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,93,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; (swap(4, 3, 1) || edges(1)) ; (edges(1) || (ODErepository.Linear(in_features=2, out_features=1, bias=True), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || swap(3, 1, 2)) ; ((ODErepository.Product(with_constant=1), 2, 1) || edges(1) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.592216491699219,2.1289710998535156,208.91923811099696,2.2734371140031726,25774.892005010064,0.4433858776622203,0.46174761088386856,,,,,,,0.9675268629921382,0.877200956556867,0.9964893357536585
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,94,"
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",1.8682808876037598,1.8682808876037598,105.24349026600248,1.8646105049992912,25882.000105781066,0.0,0.3385374920498338,,,,,,,0.9741214930536953,0.8855635826621672,0.9976576584795519
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,95,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Product(with_constant=1), 1, 1) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Sigmoid(), 2, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.05256462097168,1.8682808876037598,119.16452180599299,2.1073901869967813,26003.272017774056,0.391873015997082,0.3902178130959558,,,,,,,0.965060118490754,0.8800336878684175,0.9979315069800399
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,96,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1) || (ODErepository.Linear(in_features=1, out_features=4, bias=False), 1, 4)) ; ((ODErepository.Sum(with_constant=-1), 3, 1) || (ODErepository.Linear(in_features=2, out_features=2, bias=False), 2, 2)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",18.48723030090332,1.8682808876037598,93.04289075500128,2.297645017999457,26098.612553547056,0.4685055430903473,0.45537491077858006,,,,,,,0.9736795951969274,0.8855484975735869,0.9985553695475224
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,97,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3) || (ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(2) || (ODErepository.Linear(in_features=2, out_features=1, bias=False), 2, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=False), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",11.61030101776123,1.8682808876037598,125.78981189600017,2.1395598229937605,26226.54192526605,0.5444351546453928,0.45877471192694513,,,,,,,0.972397261478621,0.8820344079089041,0.9986010453045637
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,98,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Linear(in_features=2, out_features=2, bias=True), 2, 2) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=3, out_features=1, bias=False), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",25.044891357421875,1.8682808876037598,78.8670143240015,2.5650910030017258,26307.974030593054,0.44661409294049786,0.45651715507996593,,,,,,,0.9682089362376304,0.8785884403512646,0.9975939806193634
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,99,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=3, bias=False), 1, 3)) ; ((ODErepository.Product(with_constant=-1), 3, 1)) ; ((ODErepository.Linear(in_features=1, out_features=3, bias=True), 1, 3)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",7761631.0,1.8682808876037598,58.429741103995184,1.4253744879970327,26367.829146185046,0.5241579673201062,0.5901835186553078,,,,,,,0.9512412587801797,0.858999538784498,0.7899019283677196
+target_len_4_noisy_hierarchical_damg_kernel_13_42,bo,target_len_4,noisy_hierarchical_damg_kernel_13,42,100,"
+Learner(
+    model= (
+        ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Linear(in_features=3, out_features=2, bias=True), 3, 2) || (ODErepository.Sigmoid(), 1, 1) || (ODErepository.Product(with_constant=1), 1, 1)) ; (edges(3) || (ODErepository.Sigmoid(), 1, 1)) ; ((ODErepository.Linear(in_features=4, out_features=1, bias=True), 4, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+","
+Learner(
+    model= (
+        ((ODErepository.Product(with_constant=1), 1, 1)) ; ((ODErepository.Linear(in_features=1, out_features=5, bias=True), 1, 5)) ; ((ODErepository.Sigmoid(), 1, 1) || edges(1) || (ODErepository.Sum(with_constant=-1), 3, 1)) ; ((ODErepository.Product(with_constant=-1), 3, 1))
+        ), 
+    loss= ODErepository.MSEloss(reduction='mean'), 
+    optimizer= ODErepository.Adam(learning_rate=0.01, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0, amsgrad=False, maximize=False, capturable=False, differentiable=False, decoupled_weight_decay=False), 
+    epochs= 2000
+    )
+",8.767233848571777,1.8682808876037598,124.435461011999,2.3370079529995564,26494.601615150044,0.3885788399142832,0.3918849159417609,,,,,,,0.700177254968618,0.514064106818805,0.8462493298104907

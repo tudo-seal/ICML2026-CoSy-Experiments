@@ -1,0 +1,11 @@
+{
+  "targets": ["target_len_3", "target_len_3_refined_1", "target_len_3_refined_2", "target_len_3_refined_3"],
+  "kernels": ["noisy_hierarchical_damg_kernel"],
+  "seeds": [42],
+  "eval_budget": 3,
+  "initial_sample_size": 10,
+  "ranking_pool_size": 30,
+  "refined_search_space_mode": "keep",
+  "distance_kernel_name": "wl",
+  "results_root": "results/minimal_test"
+}
