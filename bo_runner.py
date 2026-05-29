@@ -14,7 +14,7 @@ from cosy.core.solution_space import SolutionSpace
 from cosy.core.tree import Tree
 from bayesian_optimization.examples.damg_nas.damg_repo_algebras import pytorch_function_algebra, pretty_term_algebra
 from bayesian_optimization.examples.damg_nas.damg_repo import DAMGrepository
-from ..utils import (
+from utils import (
     create_and_save_dataset,
     load_dataset,
     DEFAULT_DATASET_PATH,
