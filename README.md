@@ -13,9 +13,9 @@ CSV artifacts produced for the paper under `data/` and `csv/` (where present).
 
 Key experiment entry points
 ---------------------------
-- `bo_cli.py` — command-line interface to run the experiments, aggregate
-  results and generate plots. This is the primary entry point for reproducing
-  the BO experiments from the paper.
+- `bo_cli.py` — command-line interface to run the experiments. For reproducing
+  the paper, use its `run` command only; the paper figures were generated
+  separately with `plot_paper_figures.py`.
 - `kernel_experiments.py` — standalone kernel-analysis script. It measures
   kernel-objective alignment and surrogate learnability for the DAMG/ODE
   search spaces used in the paper. Run it directly, e.g.:
@@ -53,13 +53,74 @@ This creates timestamped per-run folders under the `results/` path specified in
 the config and writes per-iteration CSVs (`*_trace.csv`, `*_ranking.csv`) and
 a `manifest.json` describing run parameters.
 
+Python 3.11 und virtualenv (empfohlen)
+------------------------------------
+Wir empfehlen, den Code in einer isolierten Python-Umgebung unter Python 3.11 auszuführen. Nachfolgend eine einfache, für Einsteiger geeignete Anleitung, die auf macOS (oder Linux) funktioniert und sicherstellt, dass wirklich Python 3.11 verwendet wird.
+
+1. Prüfen, ob Python 3.11 bereits verfügbar ist:
+
+```bash
+python3.11 --version
+# oder (falls Sie pyenv verwenden)
+python --version
+```
+
+2. Falls Python 3.11 fehlt: auf macOS mit Homebrew installieren (empfohlen):
+
+```bash
+brew install python@3.11
+```
+
+Alternativ können Sie `pyenv` verwenden, um Python 3.11 zu installieren und zu verwalten:
+
+```bash
+brew install pyenv
+pyenv install 3.11.*/  # z.B. 3.11.12 — wählen Sie die neueste 3.11.x
+pyenv local 3.11.x     # setzt die Version für das Projekt-Verzeichnis
+```
+
+3. Virtual Environment im Projektordner anlegen (aus dem Projekt-Root):
+
+```bash
+python3.11 -m venv .venv
+```
+
+4. Virtualenv aktivieren:
+
+```bash
+source .venv/bin/activate
+```
+
+5. pip aktualisieren und Abhängigkeiten installieren:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+6. Sicherstellen, dass die venv-Python-Version stimmt:
+
+```bash
+which python   # sollte auf .venv/bin/python zeigen
+python --version  # sollte Python 3.11.x anzeigen
+```
+
+7. Deaktivieren der venv, wenn Sie fertig sind:
+
+```bash
+deactivate
+```
+
+Diese Schritte sind bewusst einfach gehalten, damit auch weniger erfahrene Python-Nutzer und Data Scientists die Umgebung reproduzierbar einrichten können. Wenn Sie Hilfe bei der Installation von Homebrew, pyenv oder bei Versionskonflikten brauchen, sagen Sie Bescheid.
+
 Reproducing paper experiments
 -----------------------------
 The repository includes configuration files in `configs/` that were used to
 generate the experiment suites reported in the paper. To reproduce a prepared
 experiment, call `bo_cli.py run --config <path-to-config.json>` from the
-project root. Use `aggregate` to combine CSVs from multiple runs and `plot` to
-generate figures (plotting functions may require matplotlib/numpy).
+project root. For the paper itself, this is the only CLI command you should
+use; the paper figures were generated with `plot_paper_figures.py`, not with
+the `plot` subcommand of `bo_cli.py`.
 
 For the kernel-analysis experiments described in the paper, invoke
 `kernel_experiments.py` directly as shown above. For the Appendix C
@@ -76,7 +137,7 @@ Repository contents
 -------------------
 - `bo_cli.py` — primary CLI for running and aggregating experiments
 - `bo_runner.py` — BO runner and instrumentation (Ask/Tell loop)
-- `bo_plotting.py` — helper plot functions (used by `plot` subcommand)
+- `bo_plotting.py` — helper plot functions for local analysis
 - `kernel_experiments.py` — kernel diagnostics and surrogate learnability
 - `best_candidate_found.py` — Appendix C reproduction script
 - `configs/` — JSON experiment definitions (including `minimal_test.json`)
