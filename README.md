@@ -53,65 +53,65 @@ This creates timestamped per-run folders under the `results/` path specified in
 the config and writes per-iteration CSVs (`*_trace.csv`, `*_ranking.csv`) and
 a `manifest.json` describing run parameters.
 
-Python 3.11 und virtualenv (empfohlen)
-------------------------------------
-Wir empfehlen, den Code in einer isolierten Python-Umgebung unter Python 3.11 auszuführen. Nachfolgend eine einfache, für Einsteiger geeignete Anleitung, die auf macOS (oder Linux) funktioniert und sicherstellt, dass wirklich Python 3.11 verwendet wird.
+Python 3.11 and virtualenv (recommended)
+--------------------------------------
+We recommend running the code inside an isolated Python 3.11 virtual environment. The following beginner-friendly instructions work on macOS (Homebrew) and Linux and ensure that Python 3.11 is used for the project.
 
-1. Prüfen, ob Python 3.11 bereits verfügbar ist:
+1. Check whether Python 3.11 is already available:
 
 ```bash
 python3.11 --version
-# oder (falls Sie pyenv verwenden)
+# or (if you use pyenv)
 python --version
 ```
 
-2. Falls Python 3.11 fehlt: auf macOS mit Homebrew installieren (empfohlen):
+2. If Python 3.11 is missing: install via Homebrew on macOS (recommended):
 
 ```bash
 brew install python@3.11
 ```
 
-Alternativ können Sie `pyenv` verwenden, um Python 3.11 zu installieren und zu verwalten:
+Alternatively, manage project Python versions with `pyenv`:
 
 ```bash
 brew install pyenv
-pyenv install 3.11.*/  # z.B. 3.11.12 — wählen Sie die neueste 3.11.x
-pyenv local 3.11.x     # setzt die Version für das Projekt-Verzeichnis
+pyenv install 3.11.12   # e.g. 3.11.12 — choose the latest 3.11.x
+pyenv local 3.11.12     # set the version for the project directory
 ```
 
-3. Virtual Environment im Projektordner anlegen (aus dem Projekt-Root):
+3. Create a virtual environment in the project root:
 
 ```bash
 python3.11 -m venv .venv
 ```
 
-4. Virtualenv aktivieren:
+4. Activate the virtual environment:
 
 ```bash
 source .venv/bin/activate
 ```
 
-5. pip aktualisieren und Abhängigkeiten installieren:
+5. Upgrade pip and install dependencies:
 
 ```bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-6. Sicherstellen, dass die venv-Python-Version stimmt:
+6. Verify that the venv Python is being used:
 
 ```bash
-which python   # sollte auf .venv/bin/python zeigen
-python --version  # sollte Python 3.11.x anzeigen
+which python   # should point to .venv/bin/python
+python --version  # should show Python 3.11.x
 ```
 
-7. Deaktivieren der venv, wenn Sie fertig sind:
+7. Deactivate the venv when finished:
 
 ```bash
 deactivate
 ```
 
-Diese Schritte sind bewusst einfach gehalten, damit auch weniger erfahrene Python-Nutzer und Data Scientists die Umgebung reproduzierbar einrichten können. Wenn Sie Hilfe bei der Installation von Homebrew, pyenv oder bei Versionskonflikten brauchen, sagen Sie Bescheid.
+These steps are intentionally simple to help less experienced Python users and data scientists set up a reproducible environment. If you need assistance installing Homebrew, configuring `pyenv`, or resolving version conflicts, please open an issue or contact the maintainer.
 
 Reproducing paper experiments
 -----------------------------
@@ -132,6 +132,15 @@ python3 best_candidate_found.py
 
 This script constructs the compact search space used for the appendix example,
 locates the unique best candidate, and recreates the accompanying plots.
+
+Which configs are required to reproduce the paper?
+-----------------------------------------------
+Briefly: the JSON files in `configs/` that are intended for reproducing the
+experiments reported in the paper are those whose filenames end with
+`_global` and the files with the suffixes `_refined_1`, `_refined_2`, and
+`_refined_3`. Other JSON files in `configs/` are example or alternative
+experiment setups and are not required to reproduce the standard experiments
+presented in the paper.
 
 Repository contents
 -------------------
