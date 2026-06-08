@@ -1,244 +1,99 @@
-# BO Experimental Evaluation — CLI Guide
+# Companion code for "Search Space Synthesis for Parametric Functions" (ICML 2026)
 
-This directory contains the experimental pipeline that backs the evaluation
-of search-space synthesis for Bayesian Optimization. Three methods are compared
-on the same synthesized ODE search space:
+This repository contains the companion code for the ICML 2026 paper
+"Search Space Synthesis for Parametric Functions" (poster reference: https://icml.cc/virtual/2026/poster/62530).
 
-- **`random`** — uniform random search baseline
-- **`bo`** — Bayesian Optimization with optimized graph or tree kernel
-- **`refined_bo`** — multi-slice BO that refines the search space between slices
-  (the method under test)
+Summary
+-------
+This project implements the experimental pipeline used in the paper: it
+provides search-space synthesis utilities, evolutionary operators, and a
+Bayesian Optimization (BO) runner used to compare search strategies on
+synthetic ODE modelling tasks. The repository also includes the datasets and
+CSV artifacts produced for the paper under `data/` and `csv/` (where present).
 
-Each experiment is uniquely identified by `(target × kernel × seed)`. The CLI
-writes per-experiment CSVs containing the full per-iteration trace
-(objective, best-so-far, timings, structural distance to best / top-k) plus
-ranking metrics (Kendall τ, Spearman ρ vs. a precomputed candidate pool).
+Key experiment entry points
+---------------------------
+- `bo_cli.py` — command-line interface to run the experiments, aggregate
+  results and generate plots. This is the primary entry point for reproducing
+  the BO experiments from the paper.
+- `kernel_experiments.py` — standalone kernel-analysis script. It measures
+  kernel-objective alignment and surrogate learnability for the DAMG/ODE
+  search spaces used in the paper. Run it directly, e.g.:
+  ```bash
+  python3 kernel_experiments.py --mode both --targets target_len_5 --n-samples 10
+  ```
+  Use `--mode domain`, `--mode surrogate`, or `--mode both` to control the
+  analysis pass.
+- `best_candidate_found.py` — self-contained script that reproduces the best
+  candidate experiment from Appendix C. It constructs the one-off search space,
+  identifies the unique best candidate, retrains the corresponding model, and
+  writes the illustrative plots.
 
-All commands below assume that they are executed from the **project root**
-(`cosy-examples/`) inside the project's virtual environment (`venv/`).
+Notes on the BO implementation
+------------------------------
+The BO implementation in this repository uses an Ask/Tell-style interface
+compatible with the `cosy-examples` Ask/Tell refactor. The CLI and runner were
+recently refactored: the BO loop now constructs an optimizer exposing
+`initialize(x0, y0)`, `suggest()` and `observe(x, y)` and instruments runtime
+and ranking diagnostics around those calls. Any earlier experimental variant
+called "RefinedBO" has been removed from the CLI surface — the core code in
+`bo_runner.py` is Ask/Tell-compatible and intended to interoperate with the
+updated `cosy-examples` implementations.
 
----
-
-## Prerequisites
-
-1. Activate the project virtual environment:
-   ```bash
-   source venv/bin/activate
-   ```
-   (or call interpreter explicitly via `venv/bin/python …`)
-2. Install the project dependencies once (see the top-level
-   `bayesian_optimization/README.md` for details).
-3. The pipeline trains a small PyTorch network per candidate; the dataset is
-   created automatically on first invocation under
-   `bayesian_optimization/examples/ODEs/data/`.
-
----
-
-## Quick start — run one of the prepared experiments
-
-Four ready-to-use configs live under `configs/`. They cover the 2×2 matrix
-`(target_len_3, target_len_4) × (noisy_combined_hierarchical_kernel,
-noisy_hierarchical_damg_kernel)` with `initial_sample_size=50`,
-`eval_budget=100`, and `seed=42`:
-
-```bash
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli run \
-  --config bayesian_optimization/examples/ODEs/bo_experimental_evaluation/configs/target_len_3_combined.json
-```
-
-This produces a timestamped folder under `results/target_len_3_combined/` with
-`random_trace.csv`, `bo_trace.csv`, `refined_trace.csv` plus the matching
-`*_ranking.csv` files and a `manifest.json` recording all run parameters.
-
----
-
-## CLI reference
-
-The CLI is exposed as `bo_cli.py` and groups all functionality into
-subcommands:
-
-| Subcommand     | Purpose |
-| -------------- | ------- |
-| `run`          | Execute experiments for `targets × kernels × seeds` |
-| `aggregate`    | Concatenate per-experiment trace/ranking CSVs into a single `aggregated__*` folder |
-| `index`        | Build a central `manifest_index.json` over all `manifest.json` files |
-| `plot`         | Generate plots from aggregated CSVs (function bodies are still stubbed — the command reports per-plot status without crashing) |
-| `list-targets` | Print available target names |
-| `list-kernels` | Print supported kernel names |
-
-### `run`
+Quick start
+-----------
+Run the minimal smoke test (fast, low-budget) to verify your environment and
+that the CLI works on your machine:
 
 ```bash
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli run \
-  --config <path-to-json>                # full experiment spec; CLI flags override
-  [--targets t1,t2 --kernels k1,k2 --seeds 1,2,3]
-  [--eval-budget 100] [--initial-sample-size 50] [--ranking-pool-size 200]
-  [--refined-search-space-mode keep|reinitialize]
-  [--distance-kernel wl|tree]
-  [--results-root path/to/results]
-  [--no-progress]
+python3 bo_cli.py run --config configs/minimal_test.json
 ```
 
-CLI arguments take precedence over JSON config values. If `targets`,
-`kernels`, or `seeds` are not provided by either source, the command exits
-with a descriptive error.
+This creates timestamped per-run folders under the `results/` path specified in
+the config and writes per-iteration CSVs (`*_trace.csv`, `*_ranking.csv`) and
+a `manifest.json` describing run parameters.
 
-`run` enables tqdm progress bars by default (one bar per method × seed,
-showing the current iteration count and ETA) and silences sklearn's
-`ConvergenceWarning` so the GP messages from early BO iterations don't drown
-out the actual output. Use `--no-progress` to opt out of the bars (e.g. when
-redirecting output to a log file); the warning filter is always on inside
-`run_command`.
+Reproducing paper experiments
+-----------------------------
+The repository includes configuration files in `configs/` that were used to
+generate the experiment suites reported in the paper. To reproduce a prepared
+experiment, call `bo_cli.py run --config <path-to-config.json>` from the
+project root. Use `aggregate` to combine CSVs from multiple runs and `plot` to
+generate figures (plotting functions may require matplotlib/numpy).
 
-### `aggregate`
+For the kernel-analysis experiments described in the paper, invoke
+`kernel_experiments.py` directly as shown above. For the Appendix C
+reproduction, run `best_candidate_found.py` directly from the repository root:
 
 ```bash
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli aggregate \
-  --results-root results/target_len_3_combined
+python3 best_candidate_found.py
 ```
 
-Concatenates all `*_trace.csv` and `*_ranking.csv` under the given root into
-`<root>/aggregated__<timestamp>/aggregated_{trace,ranking}.csv` and writes a
-small per-method summary.
+This script constructs the compact search space used for the appendix example,
+locates the unique best candidate, and recreates the accompanying plots.
 
-### `index`
+Repository contents
+-------------------
+- `bo_cli.py` — primary CLI for running and aggregating experiments
+- `bo_runner.py` — BO runner and instrumentation (Ask/Tell loop)
+- `bo_plotting.py` — helper plot functions (used by `plot` subcommand)
+- `kernel_experiments.py` — kernel diagnostics and surrogate learnability
+- `best_candidate_found.py` — Appendix C reproduction script
+- `configs/` — JSON experiment definitions (including `minimal_test.json`)
+- `results/` — runtime output (created by `bo_cli.py`)
+- `data/`, `csv/` — (when present) datasets and CSV artifacts produced for
+  experiments reported in the paper
 
-```bash
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli index \
-  --results-root results/target_len_3_combined
-```
+Paper reference
+---------------
+ICML 2026 poster (temporary link): https://icml.cc/virtual/2026/poster/62530
 
-Builds `<root>/manifest_index.json` collecting every per-experiment
-`manifest.json` under the root, grouped by `experiment_key`.
+License and citation
+--------------------
+This repository is the companion code to the ICML 2026 paper. If you use
+these artifacts in your research, please cite the paper. Update the poster
+link above when the permanent DOI / proceedings entry is available.
 
-### `plot`
-
-```bash
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli plot \
-  --results-root results/target_len_3_combined \
-  [--output-dir results/target_len_3_combined/bo_plots] \
-  [--methods random,bo,refined_bo] [--targets target_len_3] [--kernels noisy_combined_hierarchical_kernel]
-```
-
-Loads the latest aggregated CSVs, applies the optional filters, and invokes
-each plotting function. The plotting functions in `bo_plotting.py` currently
-raise `NotImplementedError`; the command reports `"plot_*: not implemented
-yet — skipping"` for each and exits cleanly. The CSV schema, however, is
-guaranteed to contain every column the future plots will need.
-
-### `list-targets` / `list-kernels`
-
-Print the strings accepted in `--targets` / `--kernels` (or the corresponding
-JSON keys).
-
----
-
-## Config file format
-
-The `--config` flag accepts a JSON object. Every CLI flag listed under `run`
-maps to a JSON key with the same name (snake_case). CLI flags always
-override JSON values.
-
-| JSON key                       | Type            | Default                  | Notes |
-| ------------------------------ | --------------- | ------------------------ | ----- |
-| `targets`                      | list[str]       | —                        | Required (CLI or JSON) |
-| `kernels`                      | list[str]       | —                        | Required (CLI or JSON) |
-| `seeds`                        | list[int]       | —                        | Required (CLI or JSON) |
-| `eval_budget`                  | int             | `50`                     | BO iterations after presamples |
-| `initial_sample_size`          | int             | `10`                     | Presamples per experiment |
-| `ranking_pool_size`            | int             | `200`                    | Reference pool for ranking + distance |
-| `kernel_optimizer`             | str             | `"fmin_l_bfgs_b"`        | passed to the GP |
-| `n_restarts_kernel_optimizer`  | int             | `10`                     | GP kernel restarts |
-| `optimizer_population_size`    | int             | `100`                    | EA population for the acquisition function |
-| `optimizer_mutation_rate`      | float           | `0.0`                    | EA mutation rate |
-| `optimizer_recombination_rate` | float           | `0.99`                   | EA recombination rate |
-| `max_depth`                    | int             | `10000`                  | derivation tree depth cap |
-| `refined_search_space_mode`    | `"keep"`/`"reinitialize"` | `"keep"`        | RefinedBO behavior at slice boundaries |
-| `distance_kernel_name`         | `"wl"`/`"tree"` | `"wl"`                   | Kernel used for Plot 5/6 distances |
-| `results_root`                 | str             | `"results"`              | Output root (per-experiment subfolders inside) |
-| `show_progress`                | bool            | `true`                   | Show tqdm progress bars during the run (CLI flag: `--no-progress` to disable) |
-
-Accepted kernel names (case-sensitive): `"wl"`, `"tree"`, `"damg"`,
-`"combined"` (short aliases) — or the full names
-`"noisy_hierarchical_wl_kernel"`, `"noisy_hierarchical_damg_kernel"`,
-`"noisy_combined_hierarchical_kernel"`. See `list-kernels`.
-
-**Refinement schedule (RefinedBO).** The schedule
-`(refinement_functions, n_iter_splits, ei_xis)` is callable-valued and
-therefore not JSON-serializable. The CLI uses
-`default_refinement_schedule(eval_budget)` (defined in `bo_runner.py`),
-which mirrors the schedule used in `ode_experiment.py`: one
-`algebra_based_refinement(refinement_1_algebra())` refinement applied at
-roughly 2/3 of the budget, with `ei_xi` switching from `0.07` (explore) to
-`0.01` (exploit). To use a custom schedule, build the three sequences in a
-small Python wrapper and call `run_experiment(...)` directly — see the
-docstring of `default_refinement_schedule` for an example.
-
----
-
-## Example configs
-
-The `configs/` directory ships four ready-to-use experiments. All four share
-`initial_sample_size=50`, `eval_budget=100`, `seeds=[42]`,
-`ranking_pool_size=200`, `refined_search_space_mode="keep"`,
-`distance_kernel_name="wl"`.
-
-| File                                  | Target          | Kernel                                 | Output folder                          |
-| ------------------------------------- | --------------- | -------------------------------------- | -------------------------------------- |
-| `configs/target_len_3_combined.json`  | `target_len_3`  | `noisy_combined_hierarchical_kernel`   | `results/target_len_3_combined/`       |
-| `configs/target_len_3_damg.json`      | `target_len_3`  | `noisy_hierarchical_damg_kernel`       | `results/target_len_3_damg/`           |
-| `configs/target_len_4_combined.json`  | `target_len_4`  | `noisy_combined_hierarchical_kernel`   | `results/target_len_4_combined/`       |
-| `configs/target_len_4_damg.json`      | `target_len_4`  | `noisy_hierarchical_damg_kernel`       | `results/target_len_4_damg/`           |
-
-Run all four sequentially from the project root:
-
-```bash
-for cfg in bayesian_optimization/examples/ODEs/bo_experimental_evaluation/configs/*.json; do
-  venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli run --config "$cfg"
-done
-```
-
----
-
-## End-to-end workflow
-
-```bash
-# 1. Run an experiment
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli run \
-  --config bayesian_optimization/examples/ODEs/bo_experimental_evaluation/configs/target_len_3_combined.json
-
-# 2. Aggregate per-experiment CSVs into a single trace/ranking pair
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli aggregate \
-  --results-root results/target_len_3_combined
-
-# 3. (Optional) Build the central manifest index
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli index \
-  --results-root results/target_len_3_combined
-
-# 4. Generate plots (functions still stubbed — reports skip messages, no crash)
-venv/bin/python -m bayesian_optimization.examples.ODEs.bo_experimental_evaluation.bo_cli plot \
-  --results-root results/target_len_3_combined
-```
-
----
-
-## Tips
-
-- **Multiple seeds** for variance estimates: extend `"seeds": [42, 43, 44, 45, 46]`
-  in the JSON (or pass `--seeds 42,43,44,45,46` on the CLI). Each seed produces
-  its own experiment subfolder.
-- **Parallelism across hosts**: give each host a different `results_root`
-  (e.g. `results/host_a`, `results/host_b`) and aggregate afterwards by pointing
-  `aggregate` at the parent folder.
-- **`reinitialize` mode** for RefinedBO discards the BO history between slices
-  and draws fresh presamples for the refined search space. This costs an extra
-  `(slices − 1) × initial_sample_size` objective evaluations on top of the BO
-  budget — make sure your wall-clock estimate accounts for that.
-- **Progress bars vs. log files**: progress bars are on by default and render
-  to stderr. When redirecting output to a log file or running detached
-  (`nohup`, `screen`, CI), pass `--no-progress` (or `"show_progress": false`
-  in the JSON) to avoid the carriage-return spam in the log.
-- **Custom refinement schedule** (more slices, different algebras): build the
-  schedule in a small Python wrapper that imports `run_experiment` directly
-  and pass `refinement_functions=…, n_iter_splits=…, ei_xis=…`. The CLI itself
-  cannot accept Python callables.
+If you want, I can also add a small `kernel_experiments.py` example config
+table or a short section describing the exact Appendix C target construction in
+`best_candidate_found.py`.

@@ -19,13 +19,13 @@ import matplotlib.pyplot as plt
 from cosy.core.tree import Tree
 from cosy.evolutionary_algorithms import RandomLimitedDepthFirstInitialization
 
-from bayesian_optimization.examples.ODEs.ode_repo_algebras import (edgelist_algebra, hierarchy_algebra,
-                                                                   pretty_term_algebra, pytorch_function_algebra)
+from bayesian_optimization.examples.damg_nas.damg_repo_algebras import (edgelist_algebra, hierarchy_algebra,
+                                                                        pretty_term_algebra, pytorch_function_algebra)
 
 from bayesian_optimization.utils import to_grakel_graph, to_indexed_nx_digraph
-from bayesian_optimization.initialize_gp import lazy_dpp_sample_optimized
-from bayesian_optimization.graph_kernel import WeisfeilerLehmanKernel
-from bayesian_optimization.examples.ODEs.ode_targets import target_to_name
+from bayesian_optimization.initial_sampling import lazy_dpp_sample_optimized
+from bayesian_optimization.kernels.graph_kernel import WeisfeilerLehmanKernel
+from bayesian_optimization.examples.damg_nas.damg_targets import target_to_name
 
 
 DATA_DIR = Path(__file__).resolve().parent / "data"

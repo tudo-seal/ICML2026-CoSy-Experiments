@@ -82,7 +82,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from .bo_experiment_config import TOP_K_PROGRAMS
+from bo_experiment_config import TOP_K_PROGRAMS
 
 
 def _to_kernel_input(x: Any) -> np.ndarray:

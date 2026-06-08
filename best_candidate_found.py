@@ -1,3 +1,10 @@
+"""Reproduce the Appendix C best-candidate experiment from the ICML 2026 paper.
+
+The script constructs the one-off target search space, identifies the unique
+best candidate, retrains the corresponding model, and writes the illustrative
+plots used in the appendix-style reproduction.
+"""
+
 import time
 
 import torch
@@ -143,8 +150,8 @@ if __name__ == "__main__":
     max_depth = 10000
 
     repo = DAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
-                         learning_rate_values=learning_rate_values,
-                         n_epoch_values=[2000])
+                          learning_rate_values=learning_rate_values,
+                          n_epoch_values=[2000])
 
     # This is the target that produces the search space with exactly one term,
     # which is the best candidate found for the following f_obj

@@ -1,3 +1,9 @@
+"""Standalone kernel analysis script for the ICML 2026 companion code.
+
+This script focuses on kernel diagnostics rather than Bayesian optimization
+runs. It supports domain analysis as well as surrogate learnability analysis.
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -23,22 +29,35 @@ from scipy.stats import kendalltau, pearsonr, spearmanr
 
 # Allow direct script execution without requiring manual PYTHONPATH setup.
 if __package__ in (None, ""):
-    project_root = Path(__file__).resolve().parents[3]
+    project_root = Path(__file__).resolve().parent
     if str(project_root) not in sys.path:
         sys.path.insert(0, str(project_root))
 
 from cosy.core import Synthesizer
 from cosy.core.tree import Tree
 
-from .utils import (
-    DEFAULT_PRESAMPLE_PATH,
-    DEFAULT_DATASET_PATH,
-    get_or_create_unique_pre_samples,
-    load_dataset,
-    create_and_save_dataset,
-    generate_pre_samples,
-    save_pre_samples
-)
+# Prefer package-relative imports, but keep a direct-script fallback so this
+# file can be executed as `python kernel_experiments.py ...` from the repo root.
+try:
+    from .utils import (
+        DEFAULT_PRESAMPLE_PATH,
+        DEFAULT_DATASET_PATH,
+        get_or_create_unique_pre_samples,
+        load_dataset,
+        create_and_save_dataset,
+        generate_pre_samples,
+        save_pre_samples,
+    )
+except ImportError:  # pragma: no cover - direct execution fallback
+    from utils import (
+        DEFAULT_PRESAMPLE_PATH,
+        DEFAULT_DATASET_PATH,
+        get_or_create_unique_pre_samples,
+        load_dataset,
+        create_and_save_dataset,
+        generate_pre_samples,
+        save_pre_samples,
+    )
 from bayesian_optimization.examples.damg_nas.damg_repo import DAMGrepository
 from bayesian_optimization.examples.damg_nas.damg_targets import (
     target_len_3_refined_1,
@@ -76,6 +95,7 @@ linear_feature_dimensions = [1, 2, 3, 4, 5]
 constant_values = [0, 1, -1]
 learning_rate_values = [1e-2,]
 
+# Shared DAMG repository used to build the search space for all kernel runs.
 repo = DAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
                      learning_rate_values=learning_rate_values,
                      n_epoch_values=[2000])
@@ -374,6 +394,7 @@ def _generate_experiment_id(n_samples: int, targets: list[str], seeds: list[int]
     return f"{timestamp}_n{n_samples}_targets{len(targets)}_seeds{len(seeds)}"
 
 def _dedupe_pre_samples(pre_samples_x):
+    """Remove duplicate sampled trees while preserving their original order."""
     unique_pre_samples_x = []
     seen = set()
     duplicates_removed = 0
@@ -387,11 +408,23 @@ def _dedupe_pre_samples(pre_samples_x):
 
     return unique_pre_samples_x, seen, duplicates_removed
 
+
+def _plot_results(target_runs: list[TargetRunData]) -> None:
+    """Lightweight plotting hook for kernel experiments.
+
+    The script is mainly a numerical analysis tool. When plotting is enabled we
+    keep the behaviour intentionally minimal so the script still works in
+    minimal environments.
+    """
+    if not target_runs:
+        return
+    print("Plotting requested, but no dedicated figures are generated here; skipping.")
+
 def main() -> None:
     # ===============================
     #  CLI argument parsing
     # ===============================
-    parser = argparse.ArgumentParser(description="Kernel experiment: analyze domain properties or evaluate as GP surrogates.")
+    parser = argparse.ArgumentParser(description="Kernel experiment: analyze domain properties or evaluate kernels as GP surrogates.")
     parser.add_argument("--n-samples", type=int, default=DEFAULT_PRESAMPLE_SIZE)
     parser.add_argument("--cv-folds", type=int, default=5, help="Number of CV folds; values below 5 can be unstable.")
     #parser.add_argument("--seed", type=int, default=RANDOM_SEED)
@@ -424,10 +457,16 @@ def main() -> None:
     )
     parser.add_argument("--no-plots", action="store_true")
     parser.add_argument("--max-kernels", type=int, default=0, help="Use only the first N kernels (0 = all).")
-    parser.add_argument("--mode", choices=["domain", "surrogate", "both"], default="both",
-                        help="Experiment mode: 'surrogate' = GP surrogate evaluation (also optimizes kernels), "
-                             "'domain' = optimized-kernel domain analysis after surrogate optimization, "
-                             "'both' = run surrogate optimization followed by domain analysis")
+    parser.add_argument(
+        "--mode",
+        choices=["domain", "surrogate", "both"],
+        default="both",
+        help=(
+            "Experiment mode: 'surrogate' = GP surrogate evaluation (also optimizes kernels), "
+            "'domain' = optimized-kernel domain analysis after surrogate optimization, "
+            "'both' = run surrogate optimization followed by domain analysis"
+        ),
+    )
     args = parser.parse_args()
 
     if len(args.targets) == 1 and args.targets[0].strip().lower() == "all":
@@ -493,6 +532,7 @@ def main() -> None:
             attempts = len(X)
             additional_generated = 0
 
+            # Top up the presample set if deduplication removed collisions.
             while len(unique_pre_samples_x) < args.n_samples and attempts < args.n_samples * 3:
                 batch_size = max(args.n_samples - len(unique_pre_samples_x), 5)
                 batch_pre_samples_x, batch_metadata = generate_pre_samples(search_space, target_obj, batch_size)
@@ -505,7 +545,7 @@ def main() -> None:
                         continue
                     seen.add(tree)
                     unique_pre_samples_x.append(tree)
-                    if len(unique_pre_samples_x) >= target_obj:
+                    if len(unique_pre_samples_x) >= args.n_samples:
                         break
             size = len(unique_pre_samples_x)
             if size < args.n_samples:
@@ -525,7 +565,9 @@ def main() -> None:
             path = save_pre_samples(X, metadata, metadata["path"])
             print(f"Saved presample of size {size} for target {target_name} at {path}.")
             X = np.array(unique_pre_samples_x, dtype=Tree)
-            #X = _load_target_samples(target_obj, args.n_samples, args.pre_sample_path)
+            # `_load_target_samples(...)` remains available for manual reuse, but
+            # the script now always generates a fresh presample set for clarity.
+            # X = _load_target_samples(target_obj, args.n_samples, args.pre_sample_path)
             target_runs.append(
                 TargetRunData(
                     target_name=target_name,

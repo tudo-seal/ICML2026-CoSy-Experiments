@@ -1,16 +1,16 @@
 # =============================================================================
-# CLI FOR DISTRIBUTED BO EXPERIMENTS
+# CLI FOR BO EXPERIMENTS (COMPANION CODE FOR ICML 2026 PAPER)
 # =============================================================================
 #
-# This module implements the command line interface used to launch
-# and aggregate experiments.
+# Companion code used in the ICML 2026 submission "Search Space Synthesis for
+# Parametric Functions" (poster ref: https://icml.cc/virtual/2026/poster/62530).
 #
-# Commands implemented: run, list-targets, list-kernels, aggregate, index
-#
-# The `run` command calls the existing `run_experiment` runner and writes a
-# small manifest.json next to the CSV artifacts. The `aggregate` command
-# concatenates trace and ranking CSVs across experiment folders under
-# `results/` and writes aggregated CSVs plus a small summary.
+# This module implements the command-line interface used to launch,
+# aggregate and inspect experiments. Primary entry points are `run`,
+# `aggregate`, `index` and `plot`. The `run` subcommand drives the BO
+# experiments via the Ask/Tell-style optimizer interface (initialize,
+# suggest, observe) implemented in `bo_runner.py` and compatible with the
+# refactored cosy-examples Ask/Tell implementation.
 #
 # =============================================================================
 
@@ -19,31 +19,28 @@ import json
 import warnings
 from pathlib import Path
 from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 import pandas as pd
 from sklearn.exceptions import ConvergenceWarning
 
-
-from .bo_runner import run_experiment
-from .bo_experiment_config import (
+from bo_runner import run_experiment
+from bo_experiment_config import (
     EVAL_BUDGET,
     INITIAL_SAMPLE_SIZE,
     RANKING_POOL_SIZE,
-    DEFAULT_REFINEMENT_FUNCTIONS,
-    DEFAULT_N_ITER_SPLITS,
-    DEFAULT_EI_XIS,
     DEFAULT_DISTANCE_KERNEL,
     DISTANCE_KERNEL_OPTIONS,
 )
-from .bo_runner import (
+from bo_runner import (
     MAX_TREE_DEPTH,
     MUTATION_RATE,
     POPULATION_SIZE,
     RECOMBINATION_RATE,
 )
 
-from .bo_plotting import load_aggregated_results, plot_optimization_curve, plot_runtime_curve, plot_distance_curves,  plot_ranking_metrics
+from bo_plotting import load_aggregated_results, plot_optimization_curve, plot_runtime_curve, plot_distance_curves, \
+    plot_ranking_metrics
 
 from bayesian_optimization.examples.damg_nas.damg_targets import (
     target_len_2,
@@ -82,31 +79,27 @@ AVAILABLE_KERNELS = [
 
 
 def run_command(
-    target_names: List[str],
-    kernels: List[str],
-    seeds: List[int],
-    *,
-    results_root: str = "results",
-    eval_budget: int = EVAL_BUDGET,
-    initial_sample_size: int = INITIAL_SAMPLE_SIZE,
-    ranking_pool_size: int = RANKING_POOL_SIZE,
-    kernel_optimizer: str = "fmin_l_bfgs_b",
-    n_restarts_kernel_optimizer: int = 20,
-    optimizer_population_size: int = POPULATION_SIZE,
-    optimizer_mutation_rate: float = MUTATION_RATE,
-    optimizer_recombination_rate: float = RECOMBINATION_RATE,
-    max_depth: int = MAX_TREE_DEPTH,
-    refined_search_space_mode: Literal["keep", "reinitialize"] = "keep",
-    refinement_functions=DEFAULT_REFINEMENT_FUNCTIONS,
-    n_iter_splits=DEFAULT_N_ITER_SPLITS,
-    ei_xis=DEFAULT_EI_XIS,
-    distance_kernel_name: str | None = DEFAULT_DISTANCE_KERNEL,
-    show_progress: bool = True,
-    config_path: str | None = None,
-    # Debugging: enable saving EI sanity-check plots/arrays per BO run
-    save_debug_plots: bool = False,
-    debug_plots_dir: str | None = None,
-    sanity_n_sanity: int = 10000,
+        target_names: List[str],
+        kernels: List[str],
+        seeds: List[int],
+        *,
+        results_root: str = "results",
+        eval_budget: int = EVAL_BUDGET,
+        initial_sample_size: int = INITIAL_SAMPLE_SIZE,
+        ranking_pool_size: int = RANKING_POOL_SIZE,
+        kernel_optimizer: str = "fmin_l_bfgs_b",
+        n_restarts_kernel_optimizer: int = 20,
+        optimizer_population_size: int = POPULATION_SIZE,
+        optimizer_mutation_rate: float = MUTATION_RATE,
+        optimizer_recombination_rate: float = RECOMBINATION_RATE,
+        max_depth: int = MAX_TREE_DEPTH,
+        distance_kernel_name: str | None = DEFAULT_DISTANCE_KERNEL,
+        show_progress: bool = True,
+        config_path: str | None = None,
+        # Debugging: enable saving EI sanity-check plots/arrays per BO run
+        save_debug_plots: bool = False,
+        debug_plots_dir: str | None = None,
+        sanity_n_sanity: int = 10000,
 ):
     """Run experiments for combinations of targets × kernels × seeds.
 
@@ -140,10 +133,6 @@ def run_command(
                 optimizer_mutation_rate=optimizer_mutation_rate,
                 optimizer_recombination_rate=optimizer_recombination_rate,
                 max_depth=max_depth,
-                refined_search_space_mode=refined_search_space_mode,
-                refinement_functions=refinement_functions,
-                n_iter_splits=n_iter_splits,
-                ei_xis=ei_xis,
                 distance_kernel_name=distance_kernel_name,
                 show_progress=show_progress,
                 sanity_n_sanity=sanity_n_sanity,
@@ -174,12 +163,6 @@ def run_command(
                         "optimizer_mutation_rate": optimizer_mutation_rate,
                         "optimizer_recombination_rate": optimizer_recombination_rate,
                         "max_depth": max_depth,
-                        "refined_search_space_mode": refined_search_space_mode,
-                        # Refinement schedule + distance kernel are not JSON-serialisable
-                        # in general (callables); persist what we can.
-                        "n_iter_splits": list(n_iter_splits) if n_iter_splits is not None else None,
-                        "ei_xis": list(ei_xis) if ei_xis is not None else None,
-                        "n_refinement_functions": len(refinement_functions) if refinement_functions is not None else 0,
                         "distance_kernel_name": distance_kernel_name,
                     },
                     "files": files,
@@ -349,12 +332,12 @@ def build_manifest_index(results_root: str = "results", output_filename: str = "
 
 
 def plot_command(
-    results_root: str,
-    *,
-    output_dir: str | None = None,
-    methods: List[str] | None = None,
-    targets: List[str] | None = None,
-    kernels: List[str] | None = None,
+        results_root: str,
+        *,
+        output_dir: str | None = None,
+        methods: List[str] | None = None,
+        targets: List[str] | None = None,
+        kernels: List[str] | None = None,
 ):
     """Generate the experimental plots from the most recent aggregated CSVs.
 
@@ -455,20 +438,19 @@ def main():
     p_run.add_argument("--config", default=None, help="Optional JSON file with shared run parameters")
     p_run.add_argument("--results-root", default=None, help="Root folder for timestamped experiment outputs")
     p_run.add_argument("--eval-budget", type=int, default=None, help="Number of BO iterations after presamples")
-    p_run.add_argument("--initial-sample-size", type=int, default=None, help="Number of initial samples shared across methods")
-    p_run.add_argument("--ranking-pool-size", type=int, default=None, help="Number of programs used to compute ranking metrics")
-    p_run.add_argument("--kernel-optimizer", default=None, help="Kernel optimizer passed to BO and RefinedBO")
+    p_run.add_argument("--initial-sample-size", type=int, default=None,
+                       help="Number of initial samples shared across methods")
+    p_run.add_argument("--ranking-pool-size", type=int, default=None,
+                       help="Number of programs used to compute ranking metrics")
+    p_run.add_argument("--kernel-optimizer", default=None, help="Kernel optimizer passed to BO")
     p_run.add_argument("--n-restarts-kernel-optimizer", type=int, default=None, help="Kernel optimizer restarts")
-    p_run.add_argument("--optimizer-population-size", type=int, default=None, help="Population size for acquisition optimizer")
-    p_run.add_argument("--optimizer-mutation-rate", type=float, default=None, help="Mutation rate for acquisition optimizer")
-    p_run.add_argument("--optimizer-recombination-rate", type=float, default=None, help="Recombination rate for acquisition optimizer")
+    p_run.add_argument("--optimizer-population-size", type=int, default=None,
+                       help="Population size for acquisition optimizer")
+    p_run.add_argument("--optimizer-mutation-rate", type=float, default=None,
+                       help="Mutation rate for acquisition optimizer")
+    p_run.add_argument("--optimizer-recombination-rate", type=float, default=None,
+                       help="Recombination rate for acquisition optimizer")
     p_run.add_argument("--max-depth", type=int, default=None, help="Maximum derivation tree depth")
-    p_run.add_argument(
-        "--refined-search-space-mode",
-        choices=["keep", "reinitialize"],
-        default=None,
-        help="How RefinedBO handles the search space after refinement",
-    )
     p_run.add_argument(
         "--distance-kernel",
         choices=list(DISTANCE_KERNEL_OPTIONS),
@@ -519,7 +501,7 @@ def main():
     )
     p_plot.add_argument("--results-root", default="results", help="Root folder containing aggregated__* subfolders")
     p_plot.add_argument("--output-dir", default=None, help="Where to write PDFs (default: <results-root>/bo_plots)")
-    p_plot.add_argument("--methods", default=None, help="Comma-separated method filter (random, bo, refined_bo)")
+    p_plot.add_argument("--methods", default=None, help="Comma-separated method filter (random, bo)")
     p_plot.add_argument("--targets", default=None, help="Comma-separated target_name filter")
     p_plot.add_argument("--kernels", default=None, help="Comma-separated kernel_name filter")
 
@@ -563,22 +545,32 @@ def main():
             seeds,
             results_root=args.results_root if args.results_root is not None else config.get("results_root", "results"),
             eval_budget=args.eval_budget if args.eval_budget is not None else config.get("eval_budget", EVAL_BUDGET),
-            initial_sample_size=args.initial_sample_size if args.initial_sample_size is not None else config.get("initial_sample_size", INITIAL_SAMPLE_SIZE),
-            ranking_pool_size=args.ranking_pool_size if args.ranking_pool_size is not None else config.get("ranking_pool_size", RANKING_POOL_SIZE),
-            kernel_optimizer=args.kernel_optimizer if args.kernel_optimizer is not None else config.get("kernel_optimizer", "fmin_l_bfgs_b"),
-            n_restarts_kernel_optimizer=args.n_restarts_kernel_optimizer if args.n_restarts_kernel_optimizer is not None else config.get("n_restarts_kernel_optimizer", 20),
-            optimizer_population_size=args.optimizer_population_size if args.optimizer_population_size is not None else config.get("optimizer_population_size", POPULATION_SIZE),
-            optimizer_mutation_rate=args.optimizer_mutation_rate if args.optimizer_mutation_rate is not None else config.get("optimizer_mutation_rate", MUTATION_RATE),
-            optimizer_recombination_rate=args.optimizer_recombination_rate if args.optimizer_recombination_rate is not None else config.get("optimizer_recombination_rate", RECOMBINATION_RATE),
+            initial_sample_size=args.initial_sample_size if args.initial_sample_size is not None else config.get(
+                "initial_sample_size", INITIAL_SAMPLE_SIZE),
+            ranking_pool_size=args.ranking_pool_size if args.ranking_pool_size is not None else config.get(
+                "ranking_pool_size", RANKING_POOL_SIZE),
+            kernel_optimizer=args.kernel_optimizer if args.kernel_optimizer is not None else config.get(
+                "kernel_optimizer", "fmin_l_bfgs_b"),
+            n_restarts_kernel_optimizer=args.n_restarts_kernel_optimizer if args.n_restarts_kernel_optimizer is not None else config.get(
+                "n_restarts_kernel_optimizer", 20),
+            optimizer_population_size=args.optimizer_population_size if args.optimizer_population_size is not None else config.get(
+                "optimizer_population_size", POPULATION_SIZE),
+            optimizer_mutation_rate=args.optimizer_mutation_rate if args.optimizer_mutation_rate is not None else config.get(
+                "optimizer_mutation_rate", MUTATION_RATE),
+            optimizer_recombination_rate=args.optimizer_recombination_rate if args.optimizer_recombination_rate is not None else config.get(
+                "optimizer_recombination_rate", RECOMBINATION_RATE),
             max_depth=args.max_depth if args.max_depth is not None else config.get("max_depth", MAX_TREE_DEPTH),
-            refined_search_space_mode=args.refined_search_space_mode if args.refined_search_space_mode is not None else config.get("refined_search_space_mode", "keep"),
-            distance_kernel_name=args.distance_kernel if args.distance_kernel is not None else config.get("distance_kernel_name", DEFAULT_DISTANCE_KERNEL),
-            show_progress=args.show_progress if args.show_progress is not None else bool(config.get("show_progress", True)),
+            distance_kernel_name=args.distance_kernel if args.distance_kernel is not None else config.get(
+                "distance_kernel_name", DEFAULT_DISTANCE_KERNEL),
+            show_progress=args.show_progress if args.show_progress is not None else bool(
+                config.get("show_progress", True)),
             config_path=args.config,
             # debug flags
             save_debug_plots=(args.debug if args.debug is not None else bool(config.get("save_debug_plots", False))),
-            debug_plots_dir=(args.debug_plots_dir if args.debug_plots_dir is not None else config.get("debug_plots_dir", None)),
-            sanity_n_sanity=(args.sanity_n_sanity if args.sanity_n_sanity is not None else config.get("sanity_n_sanity", 1000)),
+            debug_plots_dir=(
+                args.debug_plots_dir if args.debug_plots_dir is not None else config.get("debug_plots_dir", None)),
+            sanity_n_sanity=(
+                args.sanity_n_sanity if args.sanity_n_sanity is not None else config.get("sanity_n_sanity", 1000)),
         )
         return
 

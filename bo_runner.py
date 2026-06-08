@@ -1,4 +1,4 @@
-from typing import Callable, Literal, Sequence, Any
+from typing import Callable, Sequence, Any
 import logging
 import random
 import time
@@ -50,55 +50,17 @@ from bayesian_optimization.kernels.graph_kernel import WeisfeilerLehmanKernel
 from bayesian_optimization.kernels.tree_kernel import OrderedRootedSubtreeKernel
 
 from bayesian_optimization.examples.damg_nas.damg_targets import target_to_name
-from .bo_experiment_config import (
+from bo_experiment_config import (
     EVAL_BUDGET,
     INITIAL_SAMPLE_SIZE,
     RANKING_POOL_SIZE,
-    DEFAULT_REFINEMENT_FUNCTIONS,
-    DEFAULT_N_ITER_SPLITS,
-    DEFAULT_EI_XIS,
     DEFAULT_DISTANCE_KERNEL,
     DISTANCE_KERNEL_OPTIONS,
 )
-from .bo_metrics import compute_ranking_metrics
-from .bo_distance_analysis import compute_distance_to_best, compute_distance_to_topk
+from bo_metrics import compute_ranking_metrics
+from bo_distance_analysis import compute_distance_to_best, compute_distance_to_topk
 
 logger = logging.getLogger(__name__)
-
-
-def default_refinement_schedule(eval_budget: int) -> tuple[list, list[int], list[float]]:
-    """Default refinement schedule mirroring ``ode_experiment.py:217-239``.
-
-    Produces a single algebra-based refinement (`refinement_1_algebra`) applied
-    at roughly 2/3 of the budget, with ei_xi switching from 0.07 (exploration)
-    to 0.01 (exploitation). The exact split depends on ``eval_budget % 3``:
-
-    - ``eval_budget % 3 == 0`` → ``[2*eb//3, eb//3]``
-    - ``eval_budget % 3 == 1`` → ``[2*(eb//3)+1, eb//3]``
-    - ``eval_budget % 3 == 2`` → ``[2*(eb//3)+2, eb//3]``
-
-    To use a custom schedule (more slices, different algebras), build your own
-    ``(refinement_functions, n_iter_splits, ei_xis)`` tuple and pass each part
-    to ``run_experiment`` / ``run_command``. Example:
-
-    .. code-block:: python
-
-        from bayesian_optimization.bayesian_optimization import RefinedBayesianOptimization
-        from bayesian_optimization.examples.ODEs.ode_repo_algebras import (
-            refinement_1_algebra, refinement_2_algebra,
-        )
-
-        custom = (
-            [
-                RefinedBayesianOptimization.algebra_based_refinement(refinement_1_algebra()),
-                RefinedBayesianOptimization.algebra_based_refinement(refinement_2_algebra()),
-            ],
-            [20, 15, 15],
-            [0.07, 0.03, 0.01],
-        )
-        run_experiment(..., refinement_functions=custom[0],
-                       n_iter_splits=custom[1], ei_xis=custom[2])
-    """
 
 
 def _progress_iterable(iterable, *, total: int, desc: str, enabled: bool):
@@ -138,24 +100,23 @@ def _resolve_distance_kernel(name: str | None):
     )
 
 # =============================================================================
-# BAYESIAN OPTIMIZATION RUNNER
+# BAYESIAN OPTIMIZATION RUNNER (COMPANION CODE FOR ICML 2026)
 # =============================================================================
 #
-# This module implements the core optimization loop used in the experiments.
+# Core optimization loop and instrumentation used by the ICML 2026
+# experiments (see poster: https://icml.cc/virtual/2026/poster/62530). The
+# runner executes a single experimental configuration (target × kernel × seed)
+# and performs the following main steps:
 #
-# The runner executes a single experimental configuration:
+# 1. construct the search space for the requested target
+# 2. load presamples used to initialize the Ask/Tell optimizer
+# 3. run the Ask/Tell BO loop (suggest → evaluate → observe)
+# 4. record runtime instrumentation and ranking diagnostics
+# 5. write per-iteration traces and ranking metrics to CSV
 #
-#     target × kernel × seed
-#
-#
-# The runner performs:
-#
-# 1. search space generation
-# 2. presample loading
-# 3. BO optimization loop
-# 4. runtime instrumentation
-# 5. ranking metric computation
-#
+# The BO code uses an Ask/Tell-style optimizer API (initialize, suggest,
+# observe) to remain interoperable with the refactored cosy-examples
+# implementations.
 #
 # =============================================================================
 # IMPORTED COMPONENTS
@@ -172,8 +133,7 @@ def _resolve_distance_kernel(name: str | None):
 #
 # Bayesian optimizers:
 #
-# BayesianOptimization
-# RefinedBayesianOptimization
+# BayesianOptimization (Ask/Tell interface)
 #
 #
 # Random baseline:
@@ -552,8 +512,8 @@ def compute_ei_sanity_check(
 
     # Try to locate a search_space and a target/request to sample random trees
     search_space = getattr(optimizer, "search_space", None) or getattr(optimizer, "_search_space", None)
-    target = getattr(optimizer, "request", None) or getattr(optimizer, "target", None) or getattr(optimizer, "_refined_request", None)
-    max_depth = getattr(optimizer, "max_depth", None) or getattr(optimizer, "_inner_bo", None) and getattr(optimizer._inner_bo, "max_depth", None) or MAX_TREE_DEPTH
+    target = getattr(optimizer, "request", None) or getattr(optimizer, "target", None)
+    max_depth = getattr(optimizer, "max_depth", MAX_TREE_DEPTH)
 
     if search_space is None or target is None:
         return out
@@ -611,27 +571,6 @@ def compute_ei_sanity_check(
                     xi = float(diag.get("xi", diag.get("ei_xi", xi)))
         except Exception:
             pass
-        try:
-            # 2) RefinedBO stores a list of ei_xis and a slice index
-            if xi == 0.01 and hasattr(optimizer, "_ei_xis") and hasattr(optimizer, "_slice_index"):
-                xis = getattr(optimizer, "_ei_xis")
-                idx = int(getattr(optimizer, "_slice_index"))
-                if xis is not None and 0 <= idx < len(xis):
-                    xi = float(xis[idx])
-        except Exception:
-            pass
-        try:
-            # 3) For RefinedBO the inner BO may carry ei_xis as well
-            if xi == 0.01 and hasattr(optimizer, "_inner_bo") and getattr(optimizer, "_inner_bo") is not None:
-                inner = getattr(optimizer, "_inner_bo")
-                if hasattr(inner, "_ei_xis") and hasattr(inner, "_slice_index"):
-                    xis = getattr(inner, "_ei_xis")
-                    idx = int(getattr(inner, "_slice_index"))
-                    if xis is not None and 0 <= idx < len(xis):
-                        xi = float(xis[idx])
-        except Exception:
-            pass
-
         # Evaluate EI on the random set using the determined xi.
         ei_dict = ei_fn.evaluate_batch(samples, xi=xi)
         ei_random = np.asarray([float(ei_dict.get(t, 0.0)) for t in samples], dtype=float)
@@ -735,11 +674,10 @@ def compute_gp_ranking_diagnostics(
         if mu_obs.size < 2 or y_arr.size < 2:
             return out
 
-        # GP predictions are in log1p-space; compare ranks against y_arr
-        # (rank correlations are invariant), but compute Pearson on the
-        # same scale to avoid a spurious non-linearity.
-        from bayesian_optimization.bo import to_gp_space
-        y_arr_gp = to_gp_space(y_arr)
+        # GP predictions are in log1p-space by default; compare ranks against
+        # raw y_arr (rank correlations are invariant), but compute Pearson on
+        # the same transformed scale to avoid a spurious non-linearity.
+        y_arr_gp = _np.log1p(_np.clip(y_arr, a_min=0.0, a_max=None))
 
         spearman_corr = float(spearmanr(mu_obs, y_arr).correlation)
         kendall_corr = float(kendalltau(mu_obs, y_arr).correlation)
@@ -996,23 +934,9 @@ def _resolve_kernel_from_name(kernel_name: str):
 # =============================================================================
 
 
-def compute_total_objective_evaluations(
-    eval_budget: int,
-    n_pre_samples: int,
-    refinement_slices: int = 1,
-    search_space_mode: Literal["keep", "reinitialize"] = "keep",
-) -> int:
-    """Return the full objective-evaluation budget for a BO experiment.
-
-    The standard BO budget counts only iterations after the first presample block.
-    If the refined search space is reinitialized, every additional slice consumes a
-    fresh presample block and must therefore be counted explicitly in the experiment
-    budget as well.
-    """
-    extra_presamples = 0
-    if search_space_mode == "reinitialize":
-        extra_presamples = n_pre_samples * max(refinement_slices - 1, 0)
-    return eval_budget + n_pre_samples + extra_presamples
+def compute_total_objective_evaluations(eval_budget: int, n_pre_samples: int) -> int:
+    """Return the total number of objective evaluations in one BO run."""
+    return eval_budget + n_pre_samples
 
 def run_single_optimization(
     method_name: str,
@@ -1043,7 +967,7 @@ def run_single_optimization(
     Parameters
     ----------
     method_name : str
-        Method label written to the CSV ("random", "bo", "refined_bo").
+        Method label written to the CSV ("random", "bo").
     optimizer : object
         Ask-tell optimizer with ``suggest()``/``observe()``; ``_model`` attribute
         is used (when present) to compute ranking metrics against the candidate pool.
@@ -1093,13 +1017,18 @@ def run_single_optimization(
         else:
             best_x = xs[int(np.argmin(ys))]
 
-    # If optimizer supports initialize AND has not been initialized yet, hand
-    # over the presamples here. RefinedBO pre-initializes itself externally with
-    # its refinement schedule, so we must NOT re-initialize it here (which would
-    # discard the schedule).
+    # If the optimizer exposes the Ask/Tell initialization API and has not been
+    # initialized yet, hand over the presamples here.
     if hasattr(optimizer, "initialize"):
-        already_initialized = getattr(optimizer, "_bo_state", None) is not None and \
-            getattr(optimizer, "_bo_state").name != "UNINITIALIZED"
+        already_initialized = False
+        snapshot_fn = getattr(optimizer, "get_state_snapshot", None)
+        if callable(snapshot_fn):
+            try:
+                already_initialized = snapshot_fn().get("state") != "UNINITIALIZED"
+            except Exception:
+                already_initialized = False
+        elif getattr(optimizer, "_bo_state", None) is not None:
+            already_initialized = getattr(optimizer, "_bo_state").name != "UNINITIALIZED"
         if not already_initialized:
             optimizer.initialize(obj_fun=None, x0=list(start_x), y0=list(start_y), n_pre_samples=len(start_x))
 
@@ -1277,10 +1206,6 @@ def run_experiment(
     optimizer_mutation_rate: float = MUTATION_RATE,
     optimizer_recombination_rate: float = RECOMBINATION_RATE,
     max_depth: int = MAX_TREE_DEPTH,
-    refined_search_space_mode: Literal["keep", "reinitialize"] = "keep",
-    refinement_functions: Sequence = DEFAULT_REFINEMENT_FUNCTIONS,
-    n_iter_splits: Sequence[int] = DEFAULT_N_ITER_SPLITS,
-    ei_xis: Sequence[float] = DEFAULT_EI_XIS,
     distance_kernel_name: str | None = None,
     show_progress: bool = False,
     # EI sanity-check configuration (number of random candidates sampled per iteration)
@@ -1310,16 +1235,10 @@ def run_experiment(
         Dict with per-experiment CSV artifact paths.
     """
 
-    # NOTE: if a refined BO run uses search_space_mode="reinitialize", the
-    # experiment budget must include one fresh n_pre_samples block per additional
-    # refinement slice. Keep this in sync with compute_total_objective_evaluations().
-
-    total_keep = compute_total_objective_evaluations(eval_budget, initial_sample_size, refinement_slices=1, search_space_mode="keep")
-    total_reinit = compute_total_objective_evaluations(eval_budget, initial_sample_size, refinement_slices=1, search_space_mode="reinitialize")
+    total_evaluations = compute_total_objective_evaluations(eval_budget, initial_sample_size)
 
     print(f"[run_experiment] EVAL_BUDGET={eval_budget}, INITIAL_SAMPLE_SIZE={initial_sample_size}")
-    print(f"[run_experiment] total evaluations (keep) = {total_keep}")
-    print(f"[run_experiment] total evaluations (reinitialize) = {total_reinit}")
+    print(f"[run_experiment] total evaluations per run = {total_evaluations}")
 
     all_trace_dfs = []
     all_ranking_dfs = []
@@ -1345,26 +1264,6 @@ def run_experiment(
 
     kernel = _resolve_kernel_from_name(kernel_name)
     distance_kernel = _resolve_distance_kernel(distance_kernel_name)
-
-    # Refinement-Schedule: leerer/None-Input ⇒ Default aus ode_experiment.py ziehen.
-    if not refinement_functions or not n_iter_splits or not ei_xis:
-        refinement_functions, n_iter_splits, ei_xis = default_refinement_schedule(eval_budget)
-
-    # Sanity-Checks — hart fehlschlagen statt Silent-Fallback.
-    if refinement_functions is None or not refinement_functions:
-        raise ValueError("refinement_functions must be a non-empty list.")
-    if n_iter_splits is None or not n_iter_splits:
-        raise ValueError("n_iter_splits must be a non-empty list.")
-    if ei_xis is None or not ei_xis:
-        raise ValueError("ei_xis must be a non-empty list.")
-    if sum(n_iter_splits) != eval_budget:
-        raise ValueError(
-            f"sum(n_iter_splits)={sum(n_iter_splits)} != eval_budget={eval_budget}"
-        )
-    if len(n_iter_splits) != len(refinement_functions) + 1:
-        raise ValueError("len(n_iter_splits) must equal len(refinement_functions) + 1.")
-    if len(n_iter_splits) != len(ei_xis):
-        raise ValueError("len(n_iter_splits) must equal len(ei_xis).")
 
     # Epochs used for search space construction (kept consistent with examples)
     epochs = 2000
@@ -1446,7 +1345,7 @@ def run_experiment(
         bo = BayesianOptimization(
             search_space,
             target,
-            kernel,
+            kernel=kernel,
             kernel_optimizer=kernel_optimizer,
             n_restarts_kernel_optimizer=n_restarts_kernel_optimizer,
             optimizer=evo_alg,
@@ -1481,71 +1380,6 @@ def run_experiment(
                 )
             except Exception:
                 logger.exception("Failed to generate debug plots for %s", experiment_id)
-
-        # 7) Refined Bayesian Optimization — driven through the SAME instrumentation
-        #    contract as BO/Random via `run_single_optimization`. RefinedBO is
-        #    pre-initialized externally with its refinement schedule and then
-        #    handed to the runner; the runner does NOT re-initialize it (see
-        #    `run_single_optimization`'s state check).
-        """
-        try:
-            repo = ODErepository(
-                linear_feature_dimensions=FEATURE_DIMENSIONS,
-                constant_values=CONSTANT_VALUES,
-                learning_rate_values=LEARNING_RATES,
-                n_epoch_values=[epochs],
-            )
-            refined_bo = RefinedBayesianOptimization(
-                repo, target, kernel, optimizer=evo_alg,
-                kernel_optimizer=kernel_optimizer,
-                n_restarts_kernel_optimizer=n_restarts_kernel_optimizer,
-                optimizer_population_size=optimizer_population_size,
-                optimizer_mutation_rate=optimizer_mutation_rate,
-                optimizer_recombination_rate=optimizer_recombination_rate,
-                seed=seed,
-                max_depth=max_depth,
-                search_space_mode=refined_search_space_mode,
-            )
-            refined_bo.initialize(
-                obj_fun=None,
-                x0=list(start_x),
-                y0=list(start_y),
-                n_pre_samples=initial_sample_size,
-                refinement_functions=list(refinement_functions),
-                n_iter_splits=list(n_iter_splits),
-                ei_xis=list(ei_xis),
-                gp_params=None,
-                alpha=1e-6,
-                greater_is_better=False,
-                acquisition_fitness_mode="batch",
-                max_depth=max_depth,
-            )
-
-            # Runner iteration count = BO budget + reinit-presample suggestions.
-            total_refined_iters = int(sum(n_iter_splits))
-            if refined_search_space_mode == "reinitialize":
-                total_refined_iters += (len(n_iter_splits) - 1) * initial_sample_size
-
-            refined_kwargs = dict(common_run_kwargs)
-            refined_kwargs["eval_budget"] = total_refined_iters
-            trace_refined, ranking_refined = run_single_optimization(
-                method_name="refined_bo",
-                optimizer=refined_bo,
-                **refined_kwargs,
-            )
-            all_trace_dfs.append(trace_refined)
-            write_results_csv(trace_refined, target, kernel_name, seed, "refined_trace.csv")
-            if not ranking_refined.empty:
-                all_ranking_dfs.append(ranking_refined)
-                write_results_csv(ranking_refined, target, kernel_name, seed, "refined_ranking.csv")
-        except Exception:
-            logger.exception("RefinedBO run failed for %s", experiment_id)
-            # Temporary while debugging: surface RefinedBO failures on stdout too.
-            import traceback
-            print(f"[run_experiment] RefinedBO failed for {experiment_id}:")
-            traceback.print_exc()
-        """
-
 
     trace_df = pd.concat(all_trace_dfs, ignore_index=True) if all_trace_dfs else pd.DataFrame(columns=TRACE_COLUMNS)
     ranking_df = pd.concat(all_ranking_dfs, ignore_index=True) if all_ranking_dfs else pd.DataFrame(columns=RANKING_COLUMNS)
