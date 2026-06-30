@@ -90,6 +90,14 @@ from bayesian_optimization.kernels.tree_kernel import OrderedRootedSubtreeKernel
 
 DEFAULT_PRESAMPLE_SIZE = 10
 RANDOM_SEED = 42
+
+# Default objective dataset keyword, selectable on the CLI via --dataset.
+DEFAULT_DATASET_NAME = "trapezoid"
+
+# Dataset path used by the objective function. Defaults to the shipped trapezoid
+# dataset but can be redirected by main() after parsing --dataset.
+ACTIVE_DATASET_PATH: Path = DEFAULT_DATASET_PATH
+
 WL_N_ITERS = 1
 linear_feature_dimensions = [1, 2, 3, 4, 5]
 constant_values = [0, 1, -1]
@@ -115,6 +123,24 @@ AVAILABLE_ODE_TARGETS: dict[str, Any] = {
     target_to_name(target_len_4_refined_1): target_len_4_refined_1,
 }
 AVAILABLE_ODE_TARGET_NAMES = tuple(AVAILABLE_ODE_TARGETS.keys())
+
+def resolve_dataset_path(dataset: str) -> Path:
+    """Resolve the --dataset value (keyword or path) to a dataset file path.
+
+    A bare keyword like ``trapezoid`` maps to ``data/<keyword>_dataset.pt`` (so
+    the default ``trapezoid`` resolves to the shipped dataset). A value that looks
+    like a path (contains a separator or ends in ``.pt``/``.pth``) is used as-is.
+    """
+    raw = str(dataset).strip()
+    candidate = Path(raw)
+    looks_like_path = (
+        candidate.suffix.lower() in {".pt", ".pth"}
+        or any(sep in raw for sep in ("/", "\\"))
+    )
+    if looks_like_path:
+        return candidate
+    return DEFAULT_DATASET_PATH.parent / f"{raw}_dataset.pt"
+
 
 @lru_cache(maxsize=1)
 def _load_objective_dataset(dataset_path: Path = DEFAULT_DATASET_PATH) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -153,7 +179,7 @@ def f_obj(t: Tree, seed: int | None = None) -> float:
 
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
-    x, y, x_test, y_test = _load_objective_dataset(DEFAULT_DATASET_PATH)
+    x, y, x_test, y_test = _load_objective_dataset(ACTIVE_DATASET_PATH)
     learner = t.interpret(pytorch_function_algebra())
     return learner(x, y, x_test, y_test)
 
@@ -369,6 +395,7 @@ def _save_experiment_metadata(
             "targets": args.targets,
             "max_kernels": args.max_kernels,
             "no_plots": args.no_plots,
+            "dataset": args.dataset,
         },
         #"environment": {
         #    "python_version": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
@@ -467,7 +494,34 @@ def main() -> None:
             "'both' = run surrogate optimization followed by domain analysis"
         ),
     )
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        default=DEFAULT_DATASET_NAME,
+        help=(
+            "Objective dataset to use. A keyword maps to data/<keyword>_dataset.pt "
+            f"(default: '{DEFAULT_DATASET_NAME}' -> {DEFAULT_DATASET_PATH.name}); a "
+            "value ending in .pt/.pth or containing a path separator is used directly."
+        ),
+    )
     args = parser.parse_args()
+
+    # ---------------------------------------------------------------------
+    #  Objective dataset selection (--dataset)
+    # ---------------------------------------------------------------------
+    global ACTIVE_DATASET_PATH
+    ACTIVE_DATASET_PATH = resolve_dataset_path(args.dataset)
+    is_default_dataset = ACTIVE_DATASET_PATH == DEFAULT_DATASET_PATH
+    if not ACTIVE_DATASET_PATH.exists() and not is_default_dataset:
+        # Only the default trapezoid dataset is auto-generated on demand; for any
+        # other dataset we fail loudly instead of silently creating trapezoid data.
+        print(
+            f"Dataset '{args.dataset}' not found at {ACTIVE_DATASET_PATH}. "
+            "Create it first (e.g. via utils.create_and_save_dataset) or pass an "
+            "existing .pt path."
+        )
+        sys.exit(1)
+    print(f"Using objective dataset: {ACTIVE_DATASET_PATH}")
 
     if len(args.targets) == 1 and args.targets[0].strip().lower() == "all":
         selected_targets = list(AVAILABLE_ODE_TARGET_NAMES)
