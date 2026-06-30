@@ -1,0 +1,30 @@
+{
+  "experiment_key": "target_len_5_noisy_hierarchical_damg_kernel_13_42",
+  "target": "target_len_5",
+  "kernel": "noisy_hierarchical_damg_kernel_13",
+  "seeds": [
+    42,
+    7
+  ],
+  "generated_at": "2026-06-09T20:57:45.903544",
+  "experiment_params": {
+    "results_root": "/home/pauly/ICML2026-CoSy-Experiments/results/target_len_5_global",
+    "config_path": "/home/pauly/ICML2026-CoSy-Experiments/configs/target_len_5_gobal.json",
+    "eval_budget": 100,
+    "initial_sample_size": 10,
+    "ranking_pool_size": 200,
+    "kernel_optimizer": "fmin_l_bfgs_b",
+    "n_restarts_kernel_optimizer": 20,
+    "optimizer_population_size": 80,
+    "optimizer_mutation_rate": 0.0,
+    "optimizer_recombination_rate": 0.99,
+    "max_depth": 10000,
+    "distance_kernel_name": "wl"
+  },
+  "files": {
+    "random_trace.csv": "/home/pauly/ICML2026-CoSy-Experiments/results/target_len_5_global/target_len_5_noisy_hierarchical_damg_kernel_13_42__20260609_080601_592409/random_trace.csv",
+    "random_ranking.csv": "/home/pauly/ICML2026-CoSy-Experiments/results/target_len_5_global/target_len_5_noisy_hierarchical_damg_kernel_13_42__20260609_080601_592409/random_ranking.csv",
+    "bo_trace.csv": "/home/pauly/ICML2026-CoSy-Experiments/results/target_len_5_global/target_len_5_noisy_hierarchical_damg_kernel_13_42__20260609_080601_592409/bo_trace.csv",
+    "bo_ranking.csv": "/home/pauly/ICML2026-CoSy-Experiments/results/target_len_5_global/target_len_5_noisy_hierarchical_damg_kernel_13_42__20260609_080601_592409/bo_ranking.csv"
+  }
+}

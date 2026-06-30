@@ -1,0 +1,25 @@
+{
+  "experiment_id": "20260630_085937_n10_targets1_seeds1",
+  "start_timestamp": "2026-06-30T08:59:37.790491+00:00",
+  "end_timestamp": "2026-06-30T09:00:51.221877+00:00",
+  "duration_seconds": 73.431386,
+  "parameters": {
+    "n_samples": 10,
+    "cv_folds": 5,
+    "seed": [
+      42
+    ],
+    "y_transform": "log1p",
+    "alpha": 0.001,
+    "n_restarts_optimizer": 10,
+    "mode": "both",
+    "targets": [
+      "target_len_5"
+    ],
+    "max_kernels": 0,
+    "no_plots": false,
+    "dataset": "data/sine_dataset.pt"
+  },
+  "status": "success",
+  "error_message": null
+}
