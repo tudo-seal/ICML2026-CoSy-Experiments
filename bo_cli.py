@@ -24,7 +24,7 @@ from typing import List
 import pandas as pd
 from sklearn.exceptions import ConvergenceWarning
 
-from bo_runner import run_experiment
+from bo_runner import run_experiment, set_active_dataset
 from bo_experiment_config import (
     EVAL_BUDGET,
     INITIAL_SAMPLE_SIZE,
@@ -96,6 +96,7 @@ def run_command(
         distance_kernel_name: str | None = DEFAULT_DISTANCE_KERNEL,
         show_progress: bool = True,
         config_path: str | None = None,
+        dataset: str | None = None,
         # Debugging: enable saving EI sanity-check plots/arrays per BO run
         save_debug_plots: bool = False,
         debug_plots_dir: str | None = None,
@@ -113,6 +114,9 @@ def run_command(
     warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
     config = _load_json_config(config_path)
+    # Select the objective dataset before any evaluation happens (CLI value wins,
+    # else the config key 'dataset', else the default trapezoid dataset).
+    set_active_dataset(dataset if dataset is not None else config.get("dataset", "trapezoid"))
     for tname in target_names:
         if tname not in AVAILABLE_TARGETS:
             raise ValueError(f"Unknown target: {tname}. Available: {list(AVAILABLE_TARGETS.keys())}")
@@ -436,6 +440,15 @@ def main():
         help="Comma separated list of integer seeds (or set via 'seeds' key in --config JSON)",
     )
     p_run.add_argument("--config", default=None, help="Optional JSON file with shared run parameters")
+    p_run.add_argument(
+        "--dataset",
+        default=None,
+        help=(
+            "Objective dataset: a keyword maps to data/<name>_dataset.pt "
+            "(default 'trapezoid'), or pass a .pt/.pth path directly. "
+            "Overrides the config key 'dataset'."
+        ),
+    )
     p_run.add_argument("--results-root", default=None, help="Root folder for timestamped experiment outputs")
     p_run.add_argument("--eval-budget", type=int, default=None, help="Number of BO iterations after presamples")
     p_run.add_argument("--initial-sample-size", type=int, default=None,
@@ -565,6 +578,7 @@ def main():
             show_progress=args.show_progress if args.show_progress is not None else bool(
                 config.get("show_progress", True)),
             config_path=args.config,
+            dataset=args.dataset,
             # debug flags
             save_debug_plots=(args.debug if args.debug is not None else bool(config.get("save_debug_plots", False))),
             debug_plots_dir=(

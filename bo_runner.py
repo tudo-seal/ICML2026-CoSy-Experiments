@@ -346,11 +346,64 @@ def generate_search_space(request: Type, linear_feature_dimensions: list[int], c
     construction_time = end_time - start_time
     return search_space, construction_time
 
-try:
-    x, y, x_test, y_test = load_dataset(DEFAULT_DATASET_PATH)
-except (FileNotFoundError, ValueError) as e:
-    print(f"Dataset not found or invalid at {DEFAULT_DATASET_PATH}. Generating new dataset.")
-    x, y, x_test, y_test, _ = create_and_save_dataset(dataset_path=DEFAULT_DATASET_PATH)
+# Path of the objective dataset currently in use. Defaults to the shipped
+# trapezoid dataset but can be switched at runtime via set_active_dataset()
+# (used by the CLI's --dataset option).
+ACTIVE_DATASET_PATH: Path = DEFAULT_DATASET_PATH
+
+
+def resolve_dataset_path(dataset) -> Path:
+    """Resolve a --dataset value (keyword or path) to a dataset file path.
+
+    A bare keyword like ``trapezoid`` maps to ``data/<keyword>_dataset.pt`` (so
+    the default ``trapezoid`` resolves to the shipped dataset). A value that looks
+    like a path (contains a separator or ends in ``.pt``/``.pth``) is used as-is.
+    """
+    raw = str(dataset).strip()
+    candidate = Path(raw)
+    looks_like_path = (
+        candidate.suffix.lower() in {".pt", ".pth"}
+        or any(sep in raw for sep in ("/", "\\"))
+    )
+    if looks_like_path:
+        return candidate
+    return DEFAULT_DATASET_PATH.parent / f"{raw}_dataset.pt"
+
+
+def _load_active_dataset(dataset_path: Path):
+    """Load (x, y, x_test, y_test) for the objective.
+
+    The default trapezoid dataset is auto-generated when missing (preserving the
+    original behaviour); any other dataset must already exist, so we never
+    silently write trapezoid data under a different name.
+    """
+    try:
+        return load_dataset(dataset_path)
+    except (FileNotFoundError, ValueError):
+        if Path(dataset_path) == DEFAULT_DATASET_PATH:
+            print(f"Dataset not found or invalid at {dataset_path}. Generating new dataset.")
+            xx, yy, xt, yt, _ = create_and_save_dataset(dataset_path=dataset_path)
+            return xx, yy, xt, yt
+        raise FileNotFoundError(
+            f"Dataset not found at {dataset_path}. Create it first "
+            "(e.g. via utils.create_and_save_dataset) or pass an existing .pt path."
+        )
+
+
+x, y, x_test, y_test = _load_active_dataset(ACTIVE_DATASET_PATH)
+
+
+def set_active_dataset(dataset) -> Path:
+    """Select the objective dataset (keyword or path) and reload the globals.
+
+    Must be called before run_experiment / f_obj so the new data takes effect.
+    Returns the resolved dataset path.
+    """
+    global ACTIVE_DATASET_PATH, x, y, x_test, y_test
+    ACTIVE_DATASET_PATH = resolve_dataset_path(dataset)
+    x, y, x_test, y_test = _load_active_dataset(ACTIVE_DATASET_PATH)
+    print(f"[runner] Using objective dataset: {ACTIVE_DATASET_PATH}")
+    return ACTIVE_DATASET_PATH
 
 def f_obj(t: Tree, seed: int | None = None) -> float:
     """Objective function: evaluate a Tree (neural network architecture) on the ODE regression task.
