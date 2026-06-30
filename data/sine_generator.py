@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # utils.py liegt im Repo-Root (nicht unter synthesis/). Aus dem Repo-Root
 # ausfuehren, oder den Repo-Root in PYTHONPATH haben.
-from utils import generate_data
+from .utils import generate_data
 
 
 class SineTarget(nn.Module):
