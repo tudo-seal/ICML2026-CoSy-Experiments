@@ -1,11 +1,21 @@
-import os
+import sys
+from pathlib import Path
+
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
 
-# utils.py liegt im Repo-Root (nicht unter synthesis/). Aus dem Repo-Root
-# ausfuehren, oder den Repo-Root in PYTHONPATH haben.
-from ..utils import generate_data
+# Repo-Root finden (das Verzeichnis, das utils.py enthaelt) und auf den
+# Importpfad legen -- so funktioniert `from utils import ...` unabhaengig davon,
+# von wo das Skript gestartet wird (z.B. `python data/sine_generator.py`).
+_here = Path(__file__).resolve()
+REPO_ROOT = next(
+    (p for p in (_here.parent, *_here.parents) if (p / "utils.py").is_file()),
+    _here.parent,
+)
+sys.path.insert(0, str(REPO_ROOT))
+
+from utils import generate_data
 
 
 class SineTarget(nn.Module):
@@ -23,10 +33,11 @@ print(f"Train: x={tuple(x.shape)} y={tuple(y.shape)} | "
       f"Test: x={tuple(x_test.shape)} y={tuple(y_test.shape)}")
 
 # ---- Datensatz speichern ----
-# WICHTIG: Die Keys muessen exakt x, y, x_test, y_test heissen, sonst meldet
-# load_dataset() "missing keys". Zusatz-Keys wie meta_data werden ignoriert.
-# Endung .pt, damit `--dataset sine` die Datei als data/sine_dataset.pt findet.
-os.makedirs("data", exist_ok=True)
+# Keys MUESSEN x, y, x_test, y_test heissen (load_dataset-Vertrag). Extra-Keys
+# wie meta_data werden ignoriert. Endung .pt, damit `--dataset sine` greift.
+# Ausgaben werden relativ zum Repo-Root abgelegt, nicht zum Arbeitsverzeichnis.
+data_dir = REPO_ROOT / "data"
+data_dir.mkdir(parents=True, exist_ok=True)
 torch.save(
     {
         "x": x,
@@ -35,17 +46,21 @@ torch.save(
         "y_test": y_test,
         "meta_data": {"generation_model": "SineTarget"},
     },
-    "data/sine_dataset.pt",
+    data_dir / "sine_dataset.pt",
 )
+print(f"Saved dataset -> {data_dir / 'sine_dataset.pt'}")
 
 # ---- Modell separat speichern (optional) ----
-# os.makedirs("models", exist_ok=True)
-# torch.save(generation_model.state_dict(), "models/ode_v1.pth")
+# models_dir = REPO_ROOT / "models"
+# models_dir.mkdir(parents=True, exist_ok=True)
+# torch.save(generation_model.state_dict(), models_dir / "ode_v1.pth")
 
 # ---- Plot ----
-os.makedirs("plots", exist_ok=True)
+plots_dir = REPO_ROOT / "plots"
+plots_dir.mkdir(parents=True, exist_ok=True)
 plt.figure(figsize=(12, 8))
 plt.plot(x_test.view(-1).numpy(), y_test.detach().view(-1).numpy())
-plt.savefig("plots/sine.png")
-plt.savefig("plots/sine.pdf")
+plt.savefig(plots_dir / "ode_v1.png")
+plt.savefig(plots_dir / "ode_v1.pdf")
 plt.close()
+print(f"Saved plots  -> {plots_dir}")
