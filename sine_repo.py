@@ -1,3 +1,34 @@
+"""External DAMG component extensions -- add components WITHOUT editing cosy-examples.
+
+Verified end-to-end (target_len_2, dims [1,2]): the extended repo synthesizes
+terms containing `sine`, and the extended algebras interpret them into working
+torch modules.
+
+Approach per layer:
+  Gamma / Delta (damg_repo.py side): subclass DAMGrepository, override the
+    nested Label class (iter/contains for new labels) and extend the dict that
+    specification() returns with new SpecificationBuilder entries.
+  Algebras (damg_repo_algebras.py side): the algebras are plain dicts; get the
+    base dict from its factory and add the new keys. EVERY algebra that will
+    interpret trees containing the new components needs the key, or interpret()
+    raises KeyError: pytorch_function/model, pretty_term, edgelist, hierarchy
+    (all levels), request, refinement_1/2, operator_histogram.
+  Histogram/DAMG kernel: the feature vector is a FIXED-size one-hot basis
+    (9 ops). Extending means padding all LEAF entries with zeros and giving new
+    ops their own positions; composite entries (before/beside/learner/...)
+    just combine child vectors and pass through unchanged.
+
+Usage in kernel_experiments.py / bo_runner.py:
+    from damg_extensions import ExtendedDAMGrepository, extend_algebra, extend_histogram_algebra
+    repo = ExtendedDAMGrepository(...)                    # instead of DAMGrepository(...)
+    alg = extend_algebra(pytorch_function_algebra())      # wherever an algebra is built
+    hist = extend_histogram_algebra(operator_histogram_algebra())
+
+NOTE: adding components ENLARGES every target's search space (structure
+literals are None/free). Results are not comparable with runs on the base
+component set -- treat the component set as part of the experiment config.
+"""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -232,8 +263,18 @@ def activate_extensions() -> None:
         return wrapper
 
     def reuse_tanh(alg):
+        """Mirror the WHOLE tanh name family for each new component.
+
+        Algebras used by the DAMG-kernel pipeline contain entries at two levels:
+        the raw combinator name ('tanh', 10 args) AND the hierarchy-node name
+        ('tanh_h1', 3 args) -- hierarchy_algebra first rewrites the tree, then
+        edgelist/pretty algebras interpret the rewritten tree. Both levels'
+        outputs embed the label object l, so Sine()/Cosine() flow through and
+        the entries can be reused verbatim under the new names.
+        """
         for name in NEW_COMPONENTS:
-            alg[name] = alg["tanh"]
+            for key in [k for k in alg if k == "tanh" or k.startswith("tanh_h")]:
+                alg[key.replace("tanh", name)] = alg[key]
         return alg
 
     def rename_root(alg):
