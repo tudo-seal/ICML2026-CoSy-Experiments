@@ -58,6 +58,8 @@ except ImportError:  # pragma: no cover - direct execution fallback
         generate_pre_samples,
         save_pre_samples,
     )
+from sine_repo import activate_extensions, ExtendedDAMGrepository 
+activate_extensions()
 from bayesian_optimization.examples.damg_nas.damg_repo import DAMGrepository
 from bayesian_optimization.examples.damg_nas.damg_targets import (
     target_len_3_refined_1,
@@ -104,7 +106,7 @@ constant_values = [0, 1, -1]
 learning_rate_values = [1e-2,]
 
 # Shared DAMG repository used to build the search space for all kernel runs.
-repo = DAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
+repo = ExtendedDAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
                      learning_rate_values=learning_rate_values,
                      n_epoch_values=[2000])
 
