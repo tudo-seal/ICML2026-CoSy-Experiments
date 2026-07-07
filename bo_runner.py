@@ -12,6 +12,8 @@ from cosy.core.types import Type
 from cosy.core import Synthesizer
 from cosy.core.solution_space import SolutionSpace
 from cosy.core.tree import Tree
+from sine_repo import activate_extensions, ExtendedDAMGrepository
+activate_extensions()
 from bayesian_optimization.examples.damg_nas.damg_repo_algebras import pytorch_function_algebra, pretty_term_algebra
 from bayesian_optimization.examples.damg_nas.damg_repo import DAMGrepository
 from utils import (
@@ -334,7 +336,7 @@ class RandomBaselineOptimizer:
 
 def generate_search_space(request: Type, linear_feature_dimensions: list[int], constant_values: list[int],
                           learning_rate_values: list[float], epochs: int) -> tuple[SolutionSpace, float]:
-    repo = DAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
+    repo = ExtendedDAMGrepository(linear_feature_dimensions=linear_feature_dimensions, constant_values=constant_values,
                          learning_rate_values=learning_rate_values,
                          n_epoch_values=[epochs])
 
