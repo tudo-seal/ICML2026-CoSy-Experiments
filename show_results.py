@@ -82,14 +82,14 @@ def main():
                      recovery_rate=("recovered", "mean"))
                 .reset_index())
     print("\nAggregated over seeds:\n")
-    print(agg.to_string(index=False, float_format=lambda v: f"{v:.4g}"))
+    print(agg.to_string(index=False, float_format=lambda v: f"{v:.}"))
 
     if args.best:
         print(f"\nTop {args.best} runs by best objective:\n")
         top = table.nsmallest(args.best, "best_objective")
         for _, r in top.iterrows():
             print(f"  [{r['method']}] {r['target']} / {r['kernel']} / seed {r['seed']} "
-                  f"-> {r['best_objective']:.4g}\n      {r['best_candidate']}")
+                  f"-> {r['best_objective']:.}\n      {r['best_candidate']}")
 
     if args.plot:
         import matplotlib
