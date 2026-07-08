@@ -75,6 +75,7 @@ def main():
     print(table.drop(columns=["folder"]).to_string(index=False,
           float_format=lambda v: f"{v:.4g}"))
 
+    # Kompakt-Aggregat: pro target/kernel/method über Seeds
     agg = (table.groupby(["target", "kernel", "method"])
                 .agg(runs=("seed", "count"),
                      best_mean=("best_objective", "mean"),
@@ -82,14 +83,14 @@ def main():
                      recovery_rate=("recovered", "mean"))
                 .reset_index())
     print("\nAggregated over seeds:\n")
-    print(agg.to_string(index=False, float_format=lambda v: f"{v}"))
+    print(agg.to_string(index=False, float_format=lambda v: f"{v:.4g}"))
 
     if args.best:
         print(f"\nTop {args.best} runs by best objective:\n")
         top = table.nsmallest(args.best, "best_objective")
         for _, r in top.iterrows():
             print(f"  [{r['method']}] {r['target']} / {r['kernel']} / seed {r['seed']} "
-                  f"-> {r['best_objective']:.}\n      {r['best_candidate']}")
+                  f"-> {r['best_objective']:.4g}\n      {r['best_candidate']}")
 
     if args.plot:
         import matplotlib
