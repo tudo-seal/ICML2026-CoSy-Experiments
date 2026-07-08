@@ -1,0 +1,111 @@
+
+================================================================================
+EXPERIMENT 1: Kernel-Objective Alignment and Kernel-Matrix Diagnostics
+================================================================================
+
+Target: target_len_4 | samples: 500
+Generating target values via objective function...
+/home/pauly/ICML2026-CoSy-Experiments/.venv/lib/python3.11/site-packages/torch/autograd/graph.py:882: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 12080). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:119.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Raw y-values: mean=11416192518066075498016931840.00000000, std=254912747817901161149292871680.00000000
+Transformed y-values (log1p): mean=5.44674449, std=5.45109018
+
+Analyzing kernel: noisy_hierarchical_tree_kernel
+Kernel 'noisy_hierarchical_tree_kernel' objective correlation: 0.0154 (p-value: 0.0000)
+
+Analyzing kernel: noisy_hierarchical_wl_kernel
+Kernel 'noisy_hierarchical_wl_kernel' objective correlation: 0.0213 (p-value: 0.0000)
+
+Analyzing kernel: noisy_hierarchical_damg_kernel
+Kernel 'noisy_hierarchical_damg_kernel' objective correlation: 0.0938 (p-value: 0.0000)
+
+Analyzing kernel: noisy_combined_hierarchical_kernel
+Kernel 'noisy_combined_hierarchical_kernel' objective correlation: 0.1046 (p-value: 0.0000)
+
+Analyzing kernel: noisy_hierarchical_damg_kernel_13
+Kernel 'noisy_hierarchical_damg_kernel_13' objective correlation: 0.1772 (p-value: 0.0000)
+
+Analyzing kernel: tree_kernel_1
+Kernel 'tree_kernel_1' objective correlation: 0.0385 (p-value: 0.0000)
+
+Analyzing kernel: tree_kernel_2
+Kernel 'tree_kernel_2' objective correlation: 0.0197 (p-value: 0.0000)
+
+Analyzing kernel: tree_kernel_3
+Kernel 'tree_kernel_3' objective correlation: -0.0021 (p-value: 0.4489)
+
+Analyzing kernel: wl_kernel_1
+Kernel 'wl_kernel_1' objective correlation: 0.0546 (p-value: 0.0000)
+
+Analyzing kernel: wl_kernel_2
+Kernel 'wl_kernel_2' objective correlation: 0.0223 (p-value: 0.0000)
+
+Analyzing kernel: wl_kernel_3
+Kernel 'wl_kernel_3' objective correlation: -0.0034 (p-value: 0.2260)
+
+Analyzing kernel: damg_kernel_1
+Kernel 'damg_kernel_1' objective correlation: 0.4289 (p-value: 0.0000)
+
+Analyzing kernel: damg_kernel_2
+Kernel 'damg_kernel_2' objective correlation: -0.0421 (p-value: 0.0000)
+
+Analyzing kernel: damg_kernel_3
+Kernel 'damg_kernel_3' objective correlation: -0.0518 (p-value: 0.0000)
+
+
+
+-------------------------------------------------------------------------------
+
+
+================================================================================
+EXPERIMENT 1: Kernel-Objective Alignment and Kernel-Matrix Diagnostics
+================================================================================
+
+Target: target_len_4 | samples: 500
+Generating target values via objective function...
+/home/pauly/ICML2026-CoSy-Experiments/.venv/lib/python3.11/site-packages/torch/autograd/graph.py:882: UserWarning: CUDA initialization: The NVIDIA driver on your system is too old (found version 12080). Please update your GPU driver by downloading and installing a new version from the URL: http://www.nvidia.com/Download/index.aspx Alternatively, go to: https://pytorch.org to install a PyTorch version that has been compiled with your version of the CUDA driver. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:119.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+Raw y-values: mean=516366794134499868278784.00000000, std=11534760438617080881741824.00000000
+Transformed y-values (log1p): mean=5.16379986, std=4.23641241
+
+Analyzing kernel: noisy_hierarchical_tree_kernel
+Kernel 'noisy_hierarchical_tree_kernel' objective correlation: -0.0071 (p-value: 0.0125)
+
+Analyzing kernel: noisy_hierarchical_wl_kernel
+Kernel 'noisy_hierarchical_wl_kernel' objective correlation: -0.0021 (p-value: 0.4488)
+
+Analyzing kernel: noisy_hierarchical_damg_kernel
+Kernel 'noisy_hierarchical_damg_kernel' objective correlation: 0.1437 (p-value: 0.0000)
+
+Analyzing kernel: noisy_combined_hierarchical_kernel
+Kernel 'noisy_combined_hierarchical_kernel' objective correlation: 0.1161 (p-value: 0.0000)
+
+Analyzing kernel: noisy_hierarchical_damg_kernel_13
+Kernel 'noisy_hierarchical_damg_kernel_13' objective correlation: 0.2262 (p-value: 0.0000)
+
+Analyzing kernel: tree_kernel_1
+Kernel 'tree_kernel_1' objective correlation: 0.0109 (p-value: 0.0001)
+
+Analyzing kernel: tree_kernel_2
+Kernel 'tree_kernel_2' objective correlation: -0.0081 (p-value: 0.0044)
+
+Analyzing kernel: tree_kernel_3
+Kernel 'tree_kernel_3' objective correlation: -0.0137 (p-value: 0.0000)
+
+Analyzing kernel: wl_kernel_1
+Kernel 'wl_kernel_1' objective correlation: 0.0231 (p-value: 0.0000)
+
+Analyzing kernel: wl_kernel_2
+Kernel 'wl_kernel_2' objective correlation: -0.0079 (p-value: 0.0052)
+
+Analyzing kernel: wl_kernel_3
+Kernel 'wl_kernel_3' objective correlation: -0.0122 (p-value: 0.0000)
+
+Analyzing kernel: damg_kernel_1
+Kernel 'damg_kernel_1' objective correlation: 0.4767 (p-value: 0.0000)
+
+Analyzing kernel: damg_kernel_2
+Kernel 'damg_kernel_2' objective correlation: -0.0055 (p-value: 0.0503)
+
+Analyzing kernel: damg_kernel_3
+Kernel 'damg_kernel_3' objective correlation: -0.0123 (p-value: 0.0000)
