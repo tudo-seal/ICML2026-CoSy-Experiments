@@ -48,7 +48,7 @@ def load_runs(results_root: Path) -> pd.DataFrame:
                 "recovered": last.get("recovered", float("nan")),
                 "nmse_extrap": last.get("recovery_nmse_extrap", float("nan")),
                 "complexity": last.get("best_complexity", float("nan")),
-                "best_candidate": str(last.get("best_candidate", ""))[:90],
+                "best_candidate": str(last.get("best_candidate", "")),
                 "_trace": df,
             })
     if not rows:
