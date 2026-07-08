@@ -82,7 +82,7 @@ def main():
                      recovery_rate=("recovered", "mean"))
                 .reset_index())
     print("\nAggregated over seeds:\n")
-    print(agg.to_string(index=False, float_format=lambda v: f"{v:.}"))
+    print(agg.to_string(index=False, float_format=lambda v: f"{v}"))
 
     if args.best:
         print(f"\nTop {args.best} runs by best objective:\n")
